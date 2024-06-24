@@ -29,19 +29,19 @@
 		<view class="cate-section">
 			<view class="cate-item">
 				<image src="/static/temp/c3.png"></image>
-				<text>专题</text>
+				<text>{{$t('home.hearder01')}}</text>
 			</view>
 			<view class="cate-item">
 				<image src="/static/temp/c5.png"></image>
-				<text>话题</text>
+				<text>{{$t('home.hearder02')}}</text>
 			</view>
 			<view class="cate-item">
 				<image src="/static/temp/c6.png"></image>
-				<text>优选</text>
+				<text>{{$t('home.hearder03')}}</text>
 			</view>
 			<view class="cate-item">
 				<image src="/static/temp/c7.png"></image>
-				<text>特惠</text>
+				<text>{{$t('home.hearder04')}}</text>
 			</view>
 		</view>
 

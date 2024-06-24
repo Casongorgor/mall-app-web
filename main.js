@@ -1,6 +1,21 @@
 import Vue from 'vue'
 import store from './store'
 import App from './App'
+import VueI18n from 'vue-i18n'// v8.x
+import en from './locale/en.json'
+import zhHans from './locale/zh-Hans.json'
+import zhHant from './locale/zh-Hant.json'
+const messages = {
+	en,
+	'zh-Hans': zhHans,
+	'zh-Hant': zhHant
+}
+
+let i18nConfig = {
+  locale: uni.getLocale(),// 获取已设置的语言
+  messages
+}
+
 
 const msg = (title, duration=1500, mask=false, icon='none')=>{
 	//统一提示方便全局修改
@@ -24,14 +39,18 @@ const prePage = ()=>{
 	return prePage.$vm;
 }
 
-Vue.config.productionTip = false
+
 Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;
 Vue.prototype.$api = {msg, prePage};
 
-App.mpType = 'app'
+Vue.use(VueI18n)
+const i18n = new VueI18n(i18nConfig)
+Vue.config.productionTip = false
 
+App.mpType = 'app'
 const app = new Vue({
+	i18n,
     ...App
 })
 app.$mount()
