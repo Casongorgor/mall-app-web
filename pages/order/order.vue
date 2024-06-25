@@ -31,21 +31,21 @@
 						</view>
 
 						<view class="price-box">
-							共
+              {{$t('order.total')}}
 							<text class="num">{{calcTotalQuantity(item)}}</text>
-							件商品 实付款
+              {{$t('order.commodity')}}
 							<text class="price">{{item.payAmount}}</text>
 						</view>
 						<view class="action-box b-t" v-if="item.status == 0">
-							<button class="action-btn" @click="cancelOrder(item.id)">取消订单</button>
-							<button class="action-btn recom" @click="payOrder(item.id)">立即付款</button>
+							<button class="action-btn" @click="cancelOrder(item.id)">{{$t('order.cancelOrder')}}</button>
+							<button class="action-btn recom" @click="payOrder(item.id)">{{$t('order.payOrder')}}</button>
 						</view>
 						<view class="action-box b-t" v-if="item.status == 2">
-							<button class="action-btn" >查看物流</button>
-							<button class="action-btn recom" @click="receiveOrder(item.id)">确认收货</button>
+							<button class="action-btn" >{{$t('order.checkLogistics')}}</button>
+							<button class="action-btn recom" @click="receiveOrder(item.id)">{{$t('order.confirmReceipt')}}</button>
 						</view>
 						<view class="action-box b-t" v-if="item.status == 3">
-							<button class="action-btn recom" >评价商品</button>
+							<button class="action-btn recom" >{{$t('order.ratingProducts')}}</button>
 						</view>
 					</view>
 
@@ -86,23 +86,23 @@
 				loadingType:'more',
 				navList: [{
 						state: -1,
-						text: '全部'
+						text: this.$t("order.navList.all")
 					},
 					{
 						state: 0,
-						text: '待付款'
+						text: this.$t("order.navList.non-payment")
 					},
 					{
 						state: 2,
-						text: '待收货'
+						text: this.$t("order.navList.WaitingForDelivery")
 					},
 					{
 						state: 3,
-						text: '已完成'
+						text: this.$t("order.navList.complete")
 					},
 					{
 						state: 4,
-						text: '已取消'
+						text: this.$t("order.navList.cancel")
 					}
 				],
 			};
@@ -128,19 +128,19 @@
 				let statusTip = '';
 				switch (+status) {
 					case 0:
-						statusTip = '等待付款';
+						statusTip = this.$t('order.statusTip00');
 						break;
 					case 1:
-						statusTip = '等待发货';
+						statusTip = this.$t('order.statusTip01');
 						break;
 					case 2:
-						statusTip = '等待收货';
+						statusTip = this.$t('order.statusTip02');
 						break;
 					case 3:
-						statusTip = '交易完成';
+						statusTip = this.$t('order.statusTip03');
 						break;
 					case 4:
-						statusTip = '交易关闭';
+						statusTip = this.$t('order.statusTip04');
 						break;
 				}
 				return statusTip;
@@ -211,12 +211,12 @@
 			deleteOrder(orderId) {
 				let superThis = this;
 				uni.showModal({
-				    title: '提示',
-				    content: '是否要删除该订单？',
+				    title: this.$t("order.tips"),
+				    content: this.$t("order.confirmMsg.delete"),
 				    success: function (res) {
 				        if (res.confirm) {
 				            uni.showLoading({
-				            	title: '请稍后'
+				            	title: this.$t("order.message.wait")
 				            })
 				            deleteUserOrder({orderId:orderId}).then(response=>{
 				            	uni.hideLoading();
@@ -232,12 +232,12 @@
 			cancelOrder(orderId) {
 				let superThis = this;
 				uni.showModal({
-				    title: '提示',
-				    content: '是否要取消该订单？',
+				    title: this.$t("order.tips"),
+				    content: this.$t("order.confirmMsg.cancel"),
 				    success: function (res) {
 				        if (res.confirm) {
 				            uni.showLoading({
-				            	title: '请稍后'
+				            	title: this.$t("order.message.wait")
 				            })
 				            cancelUserOrder({orderId:orderId}).then(response=>{
 				            	uni.hideLoading();
@@ -259,12 +259,12 @@
 			receiveOrder(orderId){
 				let superThis = this;
 				uni.showModal({
-				    title: '提示',
-				    content: '是否要确认收货？',
+				    title: this.$t("order.tips"),
+				    content: this.$t("order.confirmMsg.confirmReceipt"),
 				    success: function (res) {
 				        if (res.confirm) {
 				            uni.showLoading({
-				            	title: '请稍后'
+                      title: this.$t("order.message.wait")
 				            })
 				            confirmReceiveOrder({orderId:orderId}).then(response=>{
 				            	uni.hideLoading();

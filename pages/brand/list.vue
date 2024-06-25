@@ -1,14 +1,14 @@
 <template>
 	<view class="content">
 		<image src="/static/recommend_brand_banner.png" class="banner-image"></image>
-		<view class="section-tit">相关品牌</view>
+		<view class="section-tit">{{$t('brand.brand')}}</view>
 		<view class="goods-list">
 			<view v-for="(item, index) in brandList" :key="index" class="goods-item" @click="navToDetailPage(item)">
 				<view class="image-wrapper">
 					<image :src="item.logo" mode="aspectFit"></image>
 				</view>
 				<text class="title clamp">{{item.name}}</text>
-				<text class="title2">商品数量：{{item.productCount}}</text>
+				<text class="title2">{{$t('brand.productsNum')}} {{item.productCount}}</text>
 			</view>
 		</view>
 		<uni-load-more :status="loadingType"></uni-load-more>

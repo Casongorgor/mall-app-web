@@ -2,5 +2,25 @@
 	"home.hearder01": "Special topics",
 	"home.hearder02": "Topic",
 	"home.hearder03": "Preferred selection",
-	"home.hearder04": "Special offers"
+	"home.hearder04": "Special offers",
+	"home.searchText": "Enter a keyword search",
+	"home.tit01": "Brand manufacturer direct supply",
+	"home.tit02": "Factory direct to consumers, excluding brand premium",
+	"home.quantityOfGoods": "Quantity of goods",
+	"home.seckillZone": "Seckill zone",
+	"home.next": "The next one",
+	"home.start": "start",
+	"home.endTheRest": "The rest of the game:",
+	"home.freshGood": "Fresh and good",
+	"home.freshGoodLabel": "Looking for the good things in the world for you",
+	"home.popular": "Popular recommendation",
+	"home.popularLabel": "Everyone was full of praise",
+	"home.gussULike": "Guess you like",
+	"home.gussULikeLabel": "Everything you like is here",
+
+	"address.default": "默认",
+	"address.add": "新增地址",
+	"address.tips": "提示",
+	"address.deleteComfrimMes": "Are you sure to delete the address?",
+
 }

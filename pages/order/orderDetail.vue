@@ -23,7 +23,7 @@
 
 		<view class="goods-section">
 			<view class="g-header b-b">
-				<text class="name">商品信息</text>
+				<text class="name">{{$t('order.productDetail')}}</text>
 			</view>
 			<!-- 商品列表 -->
 			<view class="g-item" v-for="item in order.orderItemList" :key="item.id">
@@ -43,27 +43,27 @@
 		<!-- 金额明细 -->
 		<view class="yt-list">
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">商品合计</text>
+				<text class="cell-tit clamp">{{$t('order.productTotalAmount')}}</text>
 				<text class="cell-tip">￥{{order.totalAmount}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">运费</text>
+				<text class="cell-tit clamp">{{$t('order.freightAmount')}}</text>
 				<text class="cell-tip">￥{{order.freightAmount}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">活动优惠</text>
+				<text class="cell-tit clamp">{{$t('order.promotionAmount')}}</text>
 				<text class="cell-tip red">-￥{{order.promotionAmount}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">优惠券</text>
+				<text class="cell-tit clamp">{{$t('order.coupon')}}</text>
 				<text class="cell-tip red">-￥{{order.couponAmount}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">积分抵扣</text>
+				<text class="cell-tit clamp">{{$t('order.usePoints')}}</text>
 				<text class="cell-tip red">-￥{{order.integrationAmount}}</text>
 			</view>
 			<view class="yt-list-cell desc-cell">
-				<text class="cell-tit clamp">备注</text>
+				<text class="cell-tit clamp">{{$t('order.remark')}}</text>
 				<text class="cell-tip">{{order.note}}</text>
 			</view>
 		</view>
@@ -71,23 +71,23 @@
 		<!-- 订单明细 -->
 		<view class="yt-list">
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">订单编号</text>
+				<text class="cell-tit clamp">{{$t('order.no')}}</text>
 				<text class="cell-tip">{{order.orderSn}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">提交时间</text>
+				<text class="cell-tit clamp">{{$t('order.createTime')}}</text>
 				<text class="cell-tip">{{order.createTime | formatDateTime}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">支付方式</text>
+				<text class="cell-tit clamp">{{$t('order.payType')}}</text>
 				<text class="cell-tip">{{order.payType | formatPayType}}</text>
 			</view>
 			<view class="yt-list-cell b-b" v-if="order.status==1||order.status==2||order.status==3">
-				<text class="cell-tit clamp">实付金额</text>
+				<text class="cell-tit clamp">{{$t('order.totalPaymentAmount')}}</text>
 				<text class="cell-tip">￥{{order.payAmount}}</text>
 			</view>
 			<view class="yt-list-cell b-b" v-if="order.status==1||order.status==2||order.status==3">
-				<text class="cell-tit clamp">付款时间</text>
+				<text class="cell-tit clamp">{{$t('order.paymentTime')}}</text>
 				<text class="cell-tip">{{order.paymentTime | formatDateTime}}</text>
 			</view>
 		</view>
@@ -95,19 +95,19 @@
 		<!-- 底部 -->
 		<view class="footer" v-if="order.status==0||order.status==2||order.status==3">
 			<view class="action-box b-t" v-if="order.status==0">
-				<button class="action-btn" @click="cancelOrder(order.id)">取消订单</button>
-				<button class="action-btn recom" @click="payOrder(order.id)">立即付款</button>
+				<button class="action-btn" @click="cancelOrder(order.id)">{{$t('order.cancelOrder')}}</button>
+				<button class="action-btn recom" @click="payOrder(order.id)">{{$t('order.payOrder')}}</button>
 			</view>
 			<view class="action-box b-t" v-if="order.status == 2">
-				<button class="action-btn">查看物流</button>
-				<button class="action-btn recom" @click="receiveOrder(order.id)">确认收货</button>
+				<button class="action-btn">{{$t('order.checkLogistics')}}</button>
+				<button class="action-btn recom" @click="receiveOrder(order.id)">{{$t('order.confirmReceipt')}}</button>
 			</view>
 			<view class="action-box b-t" v-if="order.status == 3">
-				<button class="action-btn">申请售后</button>
-				<button class="action-btn recom">评价商品</button>
+				<button class="action-btn">{{$t('order.applyAfter-sale')}}</button>
+				<button class="action-btn recom">{{$t('order.ratingProducts')}}</button>
 			</view>
 			<view class="price-content" v-if="order.status==0">
-				<text>应付金额</text>
+				<text>{{$t('order.shouldPayAmount')}}</text>
 				<text class="price-tip">￥</text>
 				<text class="price">{{order.payAmount}}</text>
 			</view>
@@ -182,12 +182,12 @@
 			cancelOrder(orderId) {
 				let superThis = this;
 				uni.showModal({
-					title: '提示',
-					content: '是否要取消该订单？',
+          title: this.$t("order.tips"),
+          content: this.$t("order.confirmMsg.cancel"),
 					success: function(res) {
 						if (res.confirm) {
 							uni.showLoading({
-								title: '请稍后'
+                title: this.$t("order.message.wait")
 							})
 							cancelUserOrder({
 								orderId: orderId
@@ -211,12 +211,12 @@
 			receiveOrder(orderId) {
 				let superThis = this;
 				uni.showModal({
-					title: '提示',
-					content: '是否要确认收货？',
+          title: this.$t("order.tips"),
+          content: this.$t("order.confirmMsg.confirmReceipt"),
 					success: function(res) {
 						if (res.confirm) {
 							uni.showLoading({
-								title: '请稍后'
+								title: this.$t("order.message.wait")
 							})
 							confirmReceiveOrder({
 								orderId: orderId
@@ -235,31 +235,36 @@
 				switch (status) {
 					case 0:
 						this.orderStatus = {
-							text: '等待付款',
+							// text: '等待付款',
+              text: this.$t("order.statusTip00"),
 							image: '/static/icon_wait.png'
 						}
 						break;
 					case 1:
 						this.orderStatus = {
-							text: '等待发货',
+							// text: '等待发货',
+              text: this.$t("order.statusTip01"),
 							image: '/static/icon_deliver.png'
 						}
 						break;
 					case 2:
 						this.orderStatus = {
-							text: '等待收货',
+							// text: '等待收货',
+              text: this.$t("order.statusTip02"),
 							image: '/static/icon_receive.png'
 						}
 						break;
 					case 3:
 						this.orderStatus = {
-							text: '交易完成',
+							// text: '交易完成',
+              text: this.$t("order.statusTip03"),
 							image: '/static/icon_finish.png'
 						}
 						break;
 					case 4:
 						this.orderStatus = {
-							text: '交易关闭',
+							// text: '交易关闭',
+              text: this.$t("order.statusTip04"),
 							image: '/static/icon_close.png'
 						}
 						break;

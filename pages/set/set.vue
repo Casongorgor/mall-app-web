@@ -1,37 +1,37 @@
 <template>
 	<view class="container">
 		<view class="list-cell b-b m-t" @click="navTo('个人资料')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">个人资料</text>
+			<text class="cell-tit">{{$t('setting.userInfo')}}</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
 		<view class="list-cell b-b" @click="navTo('/pages/address/address')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">收货地址</text>
+			<text class="cell-tit">{{$t('setting.userAddress')}}</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
 		<view class="list-cell" @click="navTo('实名认证')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">实名认证</text>
+			<text class="cell-tit">{{$t('setting.real-nameAuth')}}</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
 		
 		<view class="list-cell m-t">
-			<text class="cell-tit">消息推送</text>
+			<text class="cell-tit">{{$t('setting.messagePush')}}</text>
 			<switch checked color="#fa436a" @change="switchChange" />
 		</view>
 		<view class="list-cell m-t b-b" @click="navTo('清除缓存')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">清除缓存</text>
+			<text class="cell-tit">{{$t('setting.clearCache')}}</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
-		<view class="list-cell b-b" @click="navToOuter('https://github.com/macrozheng/mall')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">关于mall-app-web</text>
-			<text class="cell-more yticon icon-you"></text>
-		</view>
+<!--		<view class="list-cell b-b" @click="navToOuter('https://github.com/macrozheng/mall')" hover-class="cell-hover" :hover-stay-time="50">-->
+<!--			<text class="cell-tit">关于mall-app-web</text>-->
+<!--			<text class="cell-more yticon icon-you"></text>-->
+<!--		</view>-->
 		<view class="list-cell">
-			<text class="cell-tit">检查更新</text>
-			<text class="cell-tip">当前版本 1.0.0</text>
+			<text class="cell-tit">{{$t('setting.checkUpdate')}}</text>
+			<text class="cell-tip">{{$t('setting.currentVer')}} 1.0.0</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
 		<view class="list-cell log-out-btn" @click="toLogout">
-			<text class="cell-tit">退出登录</text>
+			<text class="cell-tit">{{$t('setting.logout')}}</text>
 		</view>
 	</view>
 </template>
@@ -63,7 +63,7 @@
 			//退出登录
 			toLogout(){
 				uni.showModal({
-				    content: '确定要退出登录么',
+				    content: this.$t('setting.logout'),
 				    success: (e)=>{
 				    	if(e.confirm){
 				    		this.logout();
@@ -76,8 +76,8 @@
 			},
 			//switch
 			switchChange(e){
-				let statusTip = e.detail.value ? '打开': '关闭';
-				this.$api.msg(`${statusTip}消息推送`);
+				let statusTip = e.detail.value ? $t('setting.open'): $t('setting.close');
+				this.$api.msg(`${statusTip}`+ $t('setting.messagePush'));
 			},
 
 		}

@@ -3,7 +3,7 @@
 		<!-- 小程序头部兼容 -->
 		<!-- #ifdef MP -->
 		<view class="mp-search-box">
-			<input class="ser-input" type="text" value="输入关键字搜索" disabled />
+			<input class="ser-input" type="text" value="{{$t('home.searchText')}}" disabled />
 		</view>
 		<!-- #endif -->
 
@@ -49,8 +49,8 @@
 		<view class="f-header m-t" @click="navToRecommendBrandPage()">
 			<image src="/static/icon_home_brand.png"></image>
 			<view class="tit-box">
-				<text class="tit">品牌制造商直供</text>
-				<text class="tit2">工厂直达消费者，剔除品牌溢价</text>
+				<text class="tit">{{$t('home.tit01')}}</text>
+				<text class="tit2">{{$t('home.tit02')}}</text>
 			</view>
 			<text class="yticon icon-you"></text>
 		</view>
@@ -61,7 +61,7 @@
 					<image :src="item.logo" mode="aspectFit"></image>
 				</view>
 				<text class="title clamp">{{item.name}}</text>
-				<text class="title2">商品数量：{{item.productCount}}</text>
+				<text class="title2">{{$t('home.quantityOfGoods')}}：{{item.productCount}}</text>
 			</view>
 		</view>
 
@@ -69,11 +69,11 @@
 		<view class="f-header m-t" v-if="homeFlashPromotion!==null">
 			<image src="/static/icon_flash_promotion.png"></image>
 			<view class="tit-box">
-				<text class="tit">秒杀专区</text>
-				<text class="tit2">下一场 {{homeFlashPromotion.nextStartTime | formatTime}} 开始</text>
+				<text class="tit">{{$t('home.seckillZone')}}</text>
+				<text class="tit2">{{$t('home.next')}} {{homeFlashPromotion.nextStartTime | formatTime}} {{$t('home.start')}}</text>
 			</view>
 			<view class="tit-box">
-				<text class="tit2" style="text-align: right;">本场结束剩余：</text>
+				<text class="tit2" style="text-align: right;">{{$t('home.endTheRest')}}</text>
 				<view style="text-align: right;">
 					<text class="hour timer">{{cutDownTime.endHour}}</text>
 					<text>:</text>
@@ -100,8 +100,8 @@
 		<view class="f-header m-t" @click="navToNewProudctListPage()">
 			<image src="/static/icon_new_product.png"></image>
 			<view class="tit-box">
-				<text class="tit">新鲜好物</text>
-				<text class="tit2">为你寻觅世间好物</text>
+				<text class="tit">{{$t('home.freshGood')}}</text>
+				<text class="tit2">{{$t('home.freshGoodLabel')}}</text>
 			</view>
 			<text class="yticon icon-you"></text>
 		</view>
@@ -122,8 +122,8 @@
 		<view class="f-header m-t" @click="navToHotProudctListPage()">
 			<image src="/static/icon_hot_product.png"></image>
 			<view class="tit-box">
-				<text class="tit">人气推荐</text>
-				<text class="tit2">大家都赞不绝口的</text>
+				<text class="tit">{{$t('home.popular')}}</text>
+				<text class="tit2">{{$t('home.popularLabel')}}</text>
 			</view>
 			<text class="yticon icon-you"></text>
 		</view>
@@ -145,8 +145,8 @@
 		<view class="f-header m-t">
 			<image src="/static/icon_recommend_product.png"></image>
 			<view class="tit-box">
-				<text class="tit">猜你喜欢</text>
-				<text class="tit2">你喜欢的都在这里了</text>
+				<text class="tit">{{$t('home.gussULike')}}</text>
+				<text class="tit2">{{$t('home.gussULikeLabel')}}</text>
 			</view>
 			<text class="yticon icon-you" v-show="false"></text>
 		</view>

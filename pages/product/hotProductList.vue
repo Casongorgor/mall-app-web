@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<image src="/static/hot_product_banner.png" class="banner-image"></image>
-		<view class="section-tit">相关商品</view>
+		<view class="section-tit">{{$t('product.relatedProducts')}}</view>
 		<view class="goods-list">
 			<view v-for="(item, index) in productList" :key="index" class="goods-item" @click="navToDetailPage(item)">
 				<view class="image-wrapper">
@@ -11,7 +11,7 @@
 				<text class="title2">{{item.subTitle}}</text>
 				<view class="price-box">
 					<text class="price">{{item.price}}</text>
-					<text>已售 {{item.sale}}</text>
+					<text>{{$t('product.soldOut')}} {{item.sale}}</text>
 				</view>
 			</view>
 		</view>

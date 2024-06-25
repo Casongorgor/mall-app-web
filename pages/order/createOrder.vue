@@ -20,7 +20,7 @@
 
 		<view class="goods-section">
 			<view class="g-header b-b">
-				<text class="name">商品信息</text>
+				<text class="name">{{$t('order.productDetail')}}</text>
 			</view>
 			<!-- 商品列表 -->
 			<view class="g-item" v-for="item in cartPromotionItemList" :key="item.id">
@@ -41,60 +41,60 @@
 		<view class="yt-list">
 			<view class="yt-list-cell b-b" @click="toggleMask('show')">
 				<view class="cell-icon">
-					券
+          {{$t('order.quan')}}
 				</view>
-				<text class="cell-tit clamp">优惠券</text>
+				<text class="cell-tit clamp">{{$t('order.coupon')}}</text>
 				<text class="cell-tip active">
-					选择优惠券
+          {{$t('order.chooseCoupon')}}
 				</text>
 				<text class="cell-more wanjia wanjia-gengduo-d"></text>
 			</view>
 			<view class="yt-list-cell b-b">
 				<view class="cell-icon hb">
-					积
+          {{$t('order.points')}}
 				</view>
-				<text class="cell-tit clamp">积分抵扣</text>
-				<input class="integration" type="number" v-model="useIntegration" placeholder="使用积分数量" placeholder-class="placeholder"
+				<text class="cell-tit clamp">{{$t('order.usePoints')}}</text>
+				<input class="integration" type="number" v-model="useIntegration" placeholder="{{$t('order.usePoints.placeholder')}}" placeholder-class="placeholder"
 				 @input="handleIntegrationInput" />
 			</view>
 		</view>
 		<!-- 金额明细 -->
 		<view class="yt-list">
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">商品合计</text>
+				<text class="cell-tit clamp">{{$t('order.productTotalAmount')}}</text>
 				<text class="cell-tip">￥{{calcAmount.totalAmount}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">运费</text>
+				<text class="cell-tit clamp">{{$t('order.freightAmount')}}</text>
 				<text class="cell-tip">￥{{calcAmount.freightAmount}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">活动优惠</text>
+				<text class="cell-tit clamp">{{$t('order.promotionAmount')}}</text>
 				<text class="cell-tip red">-￥{{calcAmount.promotionAmount}}</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">优惠券</text>
+				<text class="cell-tit clamp">{{$t('order.coupon')}}</text>
 				<text class="cell-tip red" v-if="currCoupon!=null">-￥{{currCoupon.amount}}</text>
 				<text class="cell-tip red" v-else>-￥0</text>
 			</view>
 			<view class="yt-list-cell b-b">
-				<text class="cell-tit clamp">积分抵扣</text>
+				<text class="cell-tit clamp">{{$t('order.usePoints')}}</text>
 				<text class="cell-tip red">-￥{{calcIntegrationAmount(useIntegration)}}</text>
 			</view>
 			<view class="yt-list-cell desc-cell">
-				<text class="cell-tit clamp">备注</text>
-				<input class="desc" type="text" v-model="desc" placeholder="请填写备注信息" placeholder-class="placeholder" />
+				<text class="cell-tit clamp">{{$t('order.remark')}}</text>
+				<input class="desc" type="text" v-model="desc" placeholder="{{$t('order.remark.placeholder')}}" placeholder-class="placeholder" />
 			</view>
 		</view>
 
 		<!-- 底部 -->
 		<view class="footer">
 			<view class="price-content">
-				<text>实付款</text>
+				<text>{{$t('order.totalPayment')}}</text>
 				<text class="price-tip">￥</text>
 				<text class="price">{{calcAmount.payAmount}}</text>
 			</view>
-			<text class="submit" @click="submit">提交订单</text>
+			<text class="submit" @click="submit">{{$t('order.submit')}}</text>
 		</view>
 
 		<!-- 优惠券面板 -->
@@ -105,7 +105,7 @@
 					<view class="con">
 						<view class="left">
 							<text class="title">{{item.name}}</text>
-							<text class="time">有效期至{{item.endTime | formatDateTime}}</text>
+							<text class="time">{{$t('order.coupon.expirationDate')}} {{item.endTime | formatDateTime}}</text>
 						</view>
 						<view class="right">
 							<text class="price">{{item.amount}}</text>
@@ -230,10 +230,10 @@
 				generateOrder(orderParam).then(response => {
 					let orderId = response.data.order.id;
 					uni.showModal({
-						title: '提示',
-						content: '订单创建成功，是否要立即支付？',
-						confirmText:'去支付',
-						cancelText:'取消',
+						title: this.$t('order.tips'),
+						content: this.$t('order.afterSubmitMsg'),
+            confirmText: this.$t('order.afterSubmitMsg.pay'),
+						cancelText: this.$t('order.afterSubmitMsg.cancel'),
 						success: function(res) {
 							if (res.confirm) {
 								uni.redirectTo({

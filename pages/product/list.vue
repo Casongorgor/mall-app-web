@@ -2,13 +2,13 @@
 	<view class="content">
 		<view class="navbar" :style="{position:headerPosition,top:headerTop}">
 			<view class="nav-item" :class="{current: filterIndex === 0}" @click="tabClick(0)">
-				综合排序
+        {{$t('product.sort.synthesis')}}
 			</view>
 			<view class="nav-item" :class="{current: filterIndex === 1}" @click="tabClick(1)">
-				销量优先
+        {{$t('product.sort.salesVolume')}}
 			</view>
 			<view class="nav-item" :class="{current: filterIndex === 2}" @click="tabClick(2)">
-				<text>价格</text>
+				<text>{{$t('product.sort.price')}}</text>
 				<view class="p-box">
 					<text :class="{active: priceOrder === 1 && filterIndex === 2}" class="yticon icon-shang"></text>
 					<text :class="{active: priceOrder === 2 && filterIndex === 2}" class="yticon icon-shang xia"></text>
@@ -25,7 +25,7 @@
 				<text class="title2">{{item.subTitle}}</text>
 				<view class="price-box">
 					<text class="price">{{item.price}}</text>
-					<text>已售 {{item.sale}}</text>
+					<text>{{$t('product.soldOut')}} {{item.sale}}</text>
 				</view>
 			</view>
 		</view>
@@ -179,7 +179,7 @@
 				})
 				this.loadData('refresh', 1);
 				uni.showLoading({
-					title: '正在加载'
+					title: this.$t("common.loading")
 				})
 			},
 			//显示分类面板
@@ -201,7 +201,7 @@
 				})
 				this.loadData('refresh', 1);
 				uni.showLoading({
-					title: '正在加载'
+          title: this.$t("common.loading")
 				})
 			},
 			//详情

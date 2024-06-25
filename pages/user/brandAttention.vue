@@ -59,8 +59,8 @@
 			let thisObj = this;
 			if (index === 0) {
 				uni.showModal({
-				    title: '提示',
-				    content: '是否要清空所有浏览记录？',
+				    title: this.$t('common.tips'),
+				    content: this.$t('user.brand.confirmClear'),
 				    success: function (res) {
 				        if (res.confirm) {
 				            clearBrandAttention().then(response=>{

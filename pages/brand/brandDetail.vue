@@ -13,19 +13,20 @@
 			</view>
 			<view class="title">
 				<text :class="{Skeleton:!loaded}">{{brand.name}}</text>
-				<text :class="{Skeleton:!loaded}">品牌首字母：{{brand.firstLetter}}</text>
+				<text :class="{Skeleton:!loaded}">{{$t('brand.firstLetter')}}
+          {{brand.firstLetter}}</text>
 			</view>
 			<view>
 				<text class="yticon icon-shoucang" :class="{active: favoriteStatus}" @click="favorite()"></text>
 			</view>
 		</view>
 		<!-- 品牌故事 -->
-		<view class="section-tit">品牌故事</view>
+		<view class="section-tit">{{$t('brand.story')}}</view>
 		<view class="brand-story">
 			<text class="text">{{brand.brandStory}}</text>
 		</view>
 		<!-- 相关商品 -->
-		<view class="section-tit">相关商品</view>
+		<view class="section-tit">{{$t('brand.products')}}</view>
 		<view class="goods-list">
 			<view v-for="(item, index) in productList" :key="index" class="goods-item" @click="navToDetailPage(item)">
 				<view class="image-wrapper">
@@ -35,7 +36,7 @@
 				<text class="title2">{{item.subTitle}}</text>
 				<view class="price-box">
 					<text class="price">{{item.price}}</text>
-					<text>已售 {{item.sale}}</text>
+					<text>{{$t('brand.soldout')}} {{item.sale}}</text>
 				</view>
 			</view>
 		</view>

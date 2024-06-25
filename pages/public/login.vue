@@ -7,28 +7,28 @@
 		<view class="wrapper">
 			<view class="left-top-sign">LOGIN</view>
 			<view class="welcome">
-				欢迎回来！
+        {{$t('login.welcome')}}
 			</view>
 			<view class="input-content">
 				<view class="input-item">
-					<text class="tit">用户名</text>
-					<input type="text" v-model="username" placeholder="请输入用户名" maxlength="11"/>
+					<text class="tit">{{$t('login.userName')}}</text>
+					<input type="text" v-model="username" placeholder="{{$t('login.userName.placeholder')}}" maxlength="11"/>
 				</view>
 				<view class="input-item">
-					<text class="tit">密码</text>
-					<input type="text" v-model="password" placeholder="8-18位不含特殊字符的数字、字母组合" placeholder-class="input-empty" maxlength="20"
+					<text class="tit">{{$t('login.password')}}</text>
+					<input type="text" v-model="password" placeholder="{{$t('login.password.placeholder')}}" placeholder-class="input-empty" maxlength="20"
 					 password @confirm="toLogin" />
 				</view>
 			</view>
-			<button class="confirm-btn" @click="toLogin" :disabled="logining">登录</button>
-			<button class="confirm-btn2" @click="toRegist" >获取体验账号</button>
+			<button class="confirm-btn" @click="toLogin" :disabled="logining">{{$t('login.loginBtn')}}</button>
+<!--			<button class="confirm-btn2" @click="toRegist" >获取体验账号</button>-->
 			<view class="forget-section" @click="toRegist">
-				忘记密码?
+        {{$t('login.forgetPwd')}}
 			</view>
 		</view>
 		<view class="register-section">
-			还没有账号?
-			<text @click="toRegist">马上注册</text>
+      {{$t('login.noAccount')}}
+			<text @click="toRegist">{{$t('login.regist')}}</text>
 		</view>
 	</view>
 </template>

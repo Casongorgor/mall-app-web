@@ -3,7 +3,7 @@
 		<view class="list b-b" v-for="(item, index) in addressList" :key="index" @click="checkAddress(item)">
 			<view class="wrapper">
 				<view class="address-box">
-					<text v-if="item.defaultStatus==1" class="tag">默认</text>
+					<text v-if="item.defaultStatus==1" class="tag">{{$t('address.default')}}</text>
 					<text class="address">{{item.province}} {{item.city}} {{item.region}} {{item.detailAddress}}</text>
 				</view>
 				<view class="u-box">
@@ -15,7 +15,7 @@
 			<text class="yticon icon-iconfontshanchu1" @click.stop="handleDeleteAddress(item.id)"></text>
 		</view>
 
-		<button class="add-btn" @click="addAddress('add')">新增地址</button>
+		<button class="add-btn" @click="addAddress('add')">{{$t('address.add')}}</button>
 	</view>
 </template>
 
@@ -65,8 +65,8 @@
 			handleDeleteAddress(id){
 				let superThis = this;
 				uni.showModal({
-				    title: '提示',
-				    content: '是否要删除该地址',
+				    title: this.$t('address.tips'),
+				    content: this.$t('address.deleteComfrimMes'),
 				    success: function (res) {
 				        if (res.confirm) {
 				            deleteAddress(id).then(response=>{

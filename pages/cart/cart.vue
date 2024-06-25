@@ -4,12 +4,12 @@
 		<view v-if="!hasLogin || empty===true" class="empty">
 			<image src="/static/emptyCart.jpg" mode="aspectFit"></image>
 			<view v-if="hasLogin" class="empty-tips">
-				空空如也
-				<navigator class="navigator" v-if="hasLogin" url="../index/index" open-type="switchTab">随便逛逛></navigator>
+        {{$t('cart.empty')}}
+				<navigator class="navigator" v-if="hasLogin" url="../index/index" open-type="switchTab">{{$t('cart.switchTab')}}</navigator>
 			</view>
 			<view v-else class="empty-tips">
-				空空如也
-				<view class="navigator" @click="navToLogin">去登陆></view>
+        {{$t('cart.empty')}}
+				<view class="navigator" @click="navToLogin">{{$t('cart.login')}}</view>
 			</view>
 		</view>
 		<view v-else>
@@ -37,13 +37,13 @@
 				<view class="checkbox">
 					<image :src="allChecked?'/static/selected.png':'/static/select.png'" mode="aspectFit" @click="check('all')"></image>
 					<view class="clear-btn" :class="{show: allChecked}" @click="clearCart">
-						清空
+            {{$t('cart.clear')}}
 					</view>
 				</view>
 				<view class="total-box">
-					<text class="price">¥{{total}}元</text>
+					<text class="price">¥{{total}} {{$t('cart.yuan')}}</text>
 				</view>
-				<button type="primary" class="no-border confirm-btn" @click="createOrder">去结算</button>
+				<button type="primary" class="no-border confirm-btn" @click="createOrder">{{$t('cart.settlement')}}</button>
 			</view>
 		</view>
 	</view>
@@ -167,7 +167,7 @@
 			clearCart() {
 				clearCartList().then(response=>{
 					uni.showModal({
-						content: '清空购物车？',
+						content: this.$t("cart.clear.confirm"),
 						success: (e) => {
 							if (e.confirm) {
 								this.cartList = [];
@@ -206,7 +206,7 @@
 				})
 				if(cartIds.length==0){
 					uni.showToast({
-						title:'您还未选择要下单的商品！',
+						title: this.$t("cart.none.selection"),
 						duration:1000
 					})
 					return;

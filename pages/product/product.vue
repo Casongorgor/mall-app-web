@@ -20,9 +20,9 @@
 				<!-- <text class="coupon-tip">7折</text> -->
 			</view>
 			<view class="bot-row">
-				<text>销量: {{product.sale}}</text>
-				<text>库存: {{product.stock}}</text>
-				<text>浏览量: 768</text>
+				<text>{{$t('product.saleVolume')}} : {{product.sale}}</text>
+				<text>{{$t('product.inventory')}} : {{product.stock}}</text>
+<!--				<text>浏览量: 768</text>-->
 			</view>
 		</view>
 
@@ -114,9 +114,10 @@
 			</view>
 		</view>
 
+<!--    图文详情-->
 		<view class="detail-desc">
 			<view class="d-header">
-				<text>图文详情</text>
+				<text>{{$t('product.graphicDetails')}}</text>
 			</view>
 			<rich-text :nodes="desc"></rich-text>
 		</view>
@@ -125,20 +126,20 @@
 		<view class="page-bottom">
 			<navigator url="/pages/index/index" open-type="switchTab" class="p-b-btn">
 				<text class="yticon icon-xiatubiao--copy"></text>
-				<text>首页</text>
+				<text>{{$t('product.home')}}</text>
 			</navigator>
 			<navigator url="/pages/cart/cart" open-type="switchTab" class="p-b-btn">
 				<text class="yticon icon-gouwuche"></text>
-				<text>购物车</text>
+				<text>{{$t('product.cart')}}</text>
 			</navigator>
 			<view class="p-b-btn" :class="{active: favorite}" @click="toFavorite">
 				<text class="yticon icon-shoucang"></text>
-				<text>收藏</text>
+				<text>{{$t('product.favorite')}}</text>
 			</view>
 
 			<view class="action-btn-group">
-				<button type="primary" class=" action-btn no-border buy-now-btn" @click="buy">立即购买</button>
-				<button type="primary" class=" action-btn no-border add-cart-btn" @click="addToCart">加入购物车</button>
+				<button type="primary" class=" action-btn no-border buy-now-btn" @click="buy">{{$t('product.buyNow')}}</button>
+				<button type="primary" class=" action-btn no-border add-cart-btn" @click="addToCart">{{$t('product.addCart')}}</button>
 			</view>
 		</view>
 
@@ -152,9 +153,9 @@
 					<image :src="product.pic"></image>
 					<view class="right">
 						<text class="price">¥{{product.price}}</text>
-						<text class="stock">库存：{{product.stock}}件</text>
+						<text class="stock">{{$t('product.inventory')}}：{{product.stock}}</text>
 						<view class="selected">
-							已选：
+              {{$t('product.selected')}}：
 							<text class="selected-text" v-for="(sItem, sIndex) in specSelected" :key="sIndex">
 								{{sItem.name}}
 							</text>
@@ -170,7 +171,7 @@
 						</text>
 					</view>
 				</view>
-				<button class="btn" @click="toggleSpec">完成</button>
+				<button class="btn" @click="toggleSpec">{{$t('product.complete')}}</button>
 			</view>
 		</view>
 		<!-- 属性-模态层弹窗 -->
@@ -667,10 +668,10 @@
 			checkForLogin() {
 				if (!this.hasLogin) {
 					uni.showModal({
-						title: '提示',
-						content: '你还没登录，是否要登录？',
-						confirmText: '去登录',
-						cancelText: '取消',
+						title: this.$t('common.tips'),
+						content: this.$t('common.unloginMsg'),
+						confirmText: this.$t('common.toLogin'),
+						cancelText: this.$t('common.cancel'),
 						success: function(res) {
 							if (res.confirm) {
 								uni.navigateTo({
