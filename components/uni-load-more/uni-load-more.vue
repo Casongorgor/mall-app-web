@@ -46,8 +46,8 @@
 				default () {
 					return {
 						contentdown: "上拉显示更多",
-						contentrefresh: "正在加载...",
-						contentnomore: "没有更多数据了"
+						contentrefresh: this.$t('common.loading'),
+						contentnomore: this.$t('common.noMoreData')
 					};
 				}
 			}

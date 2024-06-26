@@ -4,11 +4,9 @@ import App from './App'
 import VueI18n from 'vue-i18n'// v8.x
 import en from './locale/en.json'
 import zhHans from './locale/zh-Hans.json'
-import zhHant from './locale/zh-Hant.json'
 const messages = {
 	en,
-	'zh-Hans': zhHans,
-	'zh-Hant': zhHant
+	'zh-Hans': zhHans
 }
 
 let i18nConfig = {

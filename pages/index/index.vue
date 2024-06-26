@@ -328,6 +328,15 @@
 			const index = e.index;
 			if (index === 0) {
 				this.$api.msg('点击了扫描');
+        if(this.$i18n.locale == 'en'){
+          this.$i18n.locale = 'zh-Hans'
+          uni.setLocale('zh-Hans')
+        }else{
+          this.$i18n.locale = 'en'
+          uni.setLocale('en')
+        }
+
+
 			} else if (index === 1) {
 				// #ifdef APP-PLUS
 				const pages = getCurrentPages();
