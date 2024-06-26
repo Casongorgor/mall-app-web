@@ -12,11 +12,11 @@
 			<view class="input-content">
 				<view class="input-item">
 					<text class="tit">{{$t('login.userName')}}</text>
-					<input type="text" v-model="username" placeholder="{{$t('login.userName.placeholder')}}" maxlength="11"/>
+					<input type="text" v-model="username" :placeholder="$t('login.userName.placeholder')" maxlength="11"/>
 				</view>
 				<view class="input-item">
 					<text class="tit">{{$t('login.password')}}</text>
-					<input type="text" v-model="password" placeholder="{{$t('login.password.placeholder')}}" placeholder-class="input-empty" maxlength="20"
+					<input type="text" v-model="password" :placeholder="$t('login.password.placeholder')" placeholder-class="input-empty" maxlength="20"
 					 password @confirm="toLogin" />
 				</view>
 			</view>

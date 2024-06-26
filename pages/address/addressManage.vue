@@ -2,15 +2,15 @@
 	<view class="content">
 		<view class="row b-b">
 			<text class="tit">{{$t('address.name')}}</text>
-			<input class="input" type="text" v-model="addressData.name" placeholder="{{$t('address.name.placeholder')}}" placeholder-class="placeholder" />
+			<input class="input" type="text" v-model="addressData.name" :placeholder="$t('address.name.placeholder')" placeholder-class="placeholder" />
 		</view>
 		<view class="row b-b">
 			<text class="tit">{{$t('address.phone')}}</text>
-			<input class="input" type="number" v-model="addressData.phoneNumber" placeholder="{{$t('address.phone.placeholder')}}" placeholder-class="placeholder" />
+			<input class="input" type="number" v-model="addressData.phoneNumber" :placeholder="$t('address.phone.placeholder')" placeholder-class="placeholder" />
 		</view>
 		<view class="row b-b">
 			<text class="tit">{{$t('address.zipCode')}}</text>
-			<input class="input" type="number" v-model="addressData.postCode" placeholder="{{$t('address.zipCode.placeholder')}}" placeholder-class="placeholder" />
+			<input class="input" type="number" v-model="addressData.postCode" :placeholder="$t('address.zipCode.placeholder')" placeholder-class="placeholder" />
 		</view>
 <!-- 		<view class="row b-b">
 			<text class="tit">所在区域</text>
@@ -21,11 +21,11 @@
 		</view> -->
 		<view class="row b-b">
 			<text class="tit">{{$t('address.area')}}</text>
-			<input class="input" type="text" v-model="addressData.prefixAddress" placeholder="{{$t('address.area.placeholder')}}" placeholder-class="placeholder" />
+			<input class="input" type="text" v-model="addressData.prefixAddress" :placeholder="$t('address.area.placeholder')" placeholder-class="placeholder" />
 		</view>
 		<view class="row b-b">
 			<text class="tit">{{$t('address.detail')}}</text>
-			<input class="input" type="text" v-model="addressData.detailAddress" placeholder="{{$t('address.detail.placeholder')}}" placeholder-class="placeholder" />
+			<input class="input" type="text" v-model="addressData.detailAddress" :placeholder="$t('address.detail.placeholder')" placeholder-class="placeholder" />
 		</view>
 
 		<view class="row default-row">

@@ -54,7 +54,7 @@
           {{$t('order.points')}}
 				</view>
 				<text class="cell-tit clamp">{{$t('order.usePoints')}}</text>
-				<input class="integration" type="number" v-model="useIntegration" placeholder="{{$t('order.usePoints.placeholder')}}" placeholder-class="placeholder"
+				<input class="integration" type="number" v-model="useIntegration" :placeholder="$t('order.usePoints.placeholder')" placeholder-class="placeholder"
 				 @input="handleIntegrationInput" />
 			</view>
 		</view>
@@ -83,7 +83,7 @@
 			</view>
 			<view class="yt-list-cell desc-cell">
 				<text class="cell-tit clamp">{{$t('order.remark')}}</text>
-				<input class="desc" type="text" v-model="desc" placeholder="{{$t('order.remark.placeholder')}}" placeholder-class="placeholder" />
+				<input class="desc" type="text" v-model="desc" :placeholder="$t('order.remark.placeholder')" placeholder-class="placeholder" />
 			</view>
 		</view>
 

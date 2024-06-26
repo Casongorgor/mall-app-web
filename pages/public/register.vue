@@ -5,139 +5,337 @@
 		<view class="right-top-sign"></view>
 		<!-- 设置白色背景防止软键盘把下部绝对定位元素顶上来盖住输入框等 -->
 		<view class="wrapper">
-			<view class="empty">
-				<image src="/static/qrcode_for_macrozheng_258.jpg" mode="aspectFit"></image>
-				<view class="empty-tips">
-					扫描上方二维码<view class="navigator">关注公众号</view>，
-				</view>
-				<view class="empty-tips">
-					回复<view class="navigator">会员</view>获取体验账号。
-				</view>
-			</view>
-		</view>
+<!--			<view class="empty">-->
+<!--				<image src="/static/qrcode_for_macrozheng_258.jpg" mode="aspectFit"></image>-->
+<!--				<view class="empty-tips">-->
+<!--					扫描上方二维码<view class="navigator">关注公众号</view>，-->
+<!--				</view>-->
+<!--				<view class="empty-tips">-->
+<!--					回复<view class="navigator">会员</view>获取体验账号。-->
+<!--				</view>-->
+<!--			</view>-->
+      <view class="left-top-sign">{{$t('register.topSign')}}</view>
+
+      <view class="welcome">
+        {{$t('register.welcome')}}
+      </view>
+      <view class="input-content">
+        <view class="input-item">
+          <text class="tit">{{$t('register.email')}}</text>
+          <input type="text" v-model="email" :placeholder="$t('register.email.placeholder')" maxlength="100"
+                 @input="validateInput"/>
+        </view>
+        <view class="input-item">
+          <text class="tit">{{$t('login.userName')}}</text>
+          <input type="text" v-model="username" :placeholder="$t('login.userName.placeholder')" maxlength="50"
+                 @input="validateInput"/>
+        </view>
+        <view class="input-item">
+          <text class="tit">{{$t('login.password')}}</text>
+          <input type="text" v-model="password" :placeholder="$t('login.password.placeholder')" placeholder-class="input-empty" maxlength="20"
+                 password @confirm="toLogin" @input="validateInput"/>
+        </view>
+        <view class="input-item">
+          <text class="tit">{{$t('register.verificationCode')}}</text>
+          <input class="text" v-model="verificationCode" :placeholder="$t('register.verificationCode.placeholder')" maxlength="8"
+                 @input="validateInput"/>
+        </view>
+      </view>
+
+      </view>
+    <button class="confirm-btn" :disabled="codeButtonDisabled" @click="getVerificationCode">{{ codeButtonText }}</button>
+    <button class="confirm-btn" @click="register" :disabled="registerDisable">{{$t('register.registerBtn')}}</button>
 	</view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {}
-		},
+import {getVerifyCode, register} from "../../api/member";
+
+  export default {
+    data() {
+      return {
+        email: '',
+        username: '',
+        password: '',
+        verificationCode: '',
+        codeButtonDisabled: false,
+        codeButtonText: this.$t('register.getCode'),
+        countdownTimer: null,
+        registerDisable: true
+      }
+    },
 		onLoad() {
 		},
 		methods: {
 			navBack() {
 				uni.navigateBack();
 			},
+      getVerificationCode() {
+        // 發送驗證碼郵件的邏輯
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        // 檢查郵箱格式是否有效
+        if (this.email && emailRegex.test(this.email)) {
+        } else {
+          uni.showToast({
+            title: this.$t('register.email.verification'),
+            icon: "error"
+          });
+          // this.$api.msg(this.$t('register.email.verification'));
+          return
+        }
+
+        // 開始倒計時
+        this.startCodeButtonCountdown()
+        getVerifyCode({
+          email: this.email
+        }).then(response => {
+          console.log('發送驗證碼郵件成功')
+        }).catch(() => {
+        });
+      },
+      startCodeButtonCountdown() {
+        this.codeButtonDisabled = true
+        this.codeButtonText = '60' + this.$t('register.retryLab')
+
+        let countdown = 60
+        this.countdownTimer = setInterval(() => {
+          countdown--
+          this.codeButtonText = `${countdown}`+ this.$t('register.retryLab')
+
+          if (countdown === 0) {
+            this.stopCodeButtonCountdown()
+          }
+        }, 1000)
+      },
+      stopCodeButtonCountdown() {
+        clearInterval(this.countdownTimer)
+        this.codeButtonDisabled = false
+        this.codeButtonText = this.$t('register.getCode')
+      },
+      register() {
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,18}$/
+        if (this.password && passwordRegex.test(this.password)) {
+        } else {
+          uni.showToast({
+            title: this.$t('register.password.verification'),
+            icon: "error"
+          });
+          return
+        }
+
+        this.registerDisable = true
+        // 註冊的邏輯,包括驗證碼的驗證
+        register({
+          email: this.email,
+          password:this.password,
+          username: this.username,
+          authCode: this.verificationCode
+        }).then(response => {
+          console.log('註冊成功，調整到登錄頁面...')
+          uni.showToast({
+            title: '註冊成功',
+            icon: "success"
+          });
+          uni.navigateTo({url:'/pages/public/login'});
+        }).catch(() => {
+          this.registerDisable = false
+          uni.navigateTo({url:'/pages/public/login'});
+        });
+      },
+      validateInput(){
+        if(this.email && this.password && this.verificationCode && this.username){
+          this.registerDisable = false
+        }else{
+          this.registerDisable = true
+        }
+      }
 		},
 
 	}
 </script>
 
 <style lang='scss'>
-	page {
-		background: #fff;
-	}
-	
-	.empty {
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100vh;
-		padding-bottom: 100upx;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		background: #fff;
-	
-		image {
-			width: 420upx;
-			height: 420upx;
-			margin-bottom: 30upx;
-		}
-		.empty-tips {
-			display: flex;
-			font-size: $font-sm+16upx;
-			color: $font-color-disabled;
-		
-			.navigator {
-				color: $uni-color-primary;
-				margin-left: 0upx;
-			}
-		}
-	}
+page {
+  background: #fff;
+}
 
-	.container {
-		padding-top: 115px;
-		position: relative;
-		width: 100vw;
-		height: 100vh;
-		overflow: hidden;
-		background: #fff;
-	}
+.container {
+  padding-top: 60px;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+}
 
-	.wrapper {
-		position: relative;
-		z-index: 90;
-		background: #fff;
-		padding-bottom: 40upx;
-	}
+.wrapper {
+  position: relative;
+  z-index: 90;
+  background: #fff;
+  padding-bottom: 40upx;
+}
 
-	.back-btn {
-		position: absolute;
-		left: 40upx;
-		z-index: 9999;
-		padding-top: var(--status-bar-height);
-		top: 40upx;
-		font-size: 40upx;
-		color: $font-color-dark;
-	}
+.back-btn {
+  position: absolute;
+  left: 40upx;
+  z-index: 9999;
+  padding-top: var(--status-bar-height);
+  top: 40upx;
+  font-size: 40upx;
+  color: $font-color-dark;
+}
 
-	.left-top-sign {
-		font-size: 120upx;
-		color: $page-color-base;
-		position: relative;
-		left: -16upx;
-	}
+.left-top-sign {
+  font-size: 120upx;
+  color: $page-color-base;
+  position: relative;
+  left: -16upx;
+}
 
-	.right-top-sign {
-		position: absolute;
-		top: 80upx;
-		right: -30upx;
-		z-index: 95;
+.right-top-sign {
+  position: absolute;
+  top: 80upx;
+  right: -30upx;
+  z-index: 95;
 
-		&:before,
-		&:after {
-			display: block;
-			content: "";
-			width: 400upx;
-			height: 80upx;
-			background: #b4f3e2;
-		}
+  &:before,
+  &:after {
+    display: block;
+    content: "";
+    width: 400upx;
+    height: 80upx;
+    background: #b4f3e2;
+  }
 
-		&:before {
-			transform: rotate(50deg);
-			border-radius: 0 50px 0 0;
-		}
+  &:before {
+    transform: rotate(50deg);
+    border-radius: 0 50px 0 0;
+  }
 
-		&:after {
-			position: absolute;
-			right: -198upx;
-			top: 0;
-			transform: rotate(-50deg);
-			border-radius: 50px 0 0 0;
-			/* background: pink; */
-		}
-	}
+  &:after {
+    position: absolute;
+    right: -198upx;
+    top: 0;
+    transform: rotate(-50deg);
+    border-radius: 50px 0 0 0;
+    /* background: pink; */
+  }
+}
 
-	.left-bottom-sign {
-		position: absolute;
-		left: -270upx;
-		bottom: -320upx;
-		border: 100upx solid #d0d1fd;
-		border-radius: 50%;
-		padding: 180upx;
-	}
+.left-bottom-sign {
+  position: absolute;
+  left: -270upx;
+  bottom: -320upx;
+  border: 100upx solid #d0d1fd;
+  border-radius: 50%;
+  padding: 180upx;
+}
+
+.welcome {
+  position: relative;
+  left: 50upx;
+  top: -90upx;
+  font-size: 46upx;
+  color: #555;
+  text-shadow: 1px 0px 1px rgba(0, 0, 0, .3);
+}
+
+.input-content {
+  padding: 0 60upx;
+}
+
+.input-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 30upx;
+  background: $page-color-light;
+  height: 120upx;
+  border-radius: 4px;
+  margin-bottom: 50upx;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .tit {
+    height: 50upx;
+    line-height: 56upx;
+    font-size: $font-sm+2upx;
+    color: $font-color-base;
+  }
+
+  input {
+    height: 60upx;
+    font-size: $font-base + 2upx;
+    color: $font-color-dark;
+    width: 100%;
+  }
+}
+
+.confirm-btn {
+  width: 630upx;
+  height: 76upx;
+  line-height: 76upx;
+  border-radius: 50px;
+  margin-top: 30upx;
+  background: $uni-color-primary;
+  color: #fff;
+  font-size: $font-lg;
+
+  &:after {
+    border-radius: 100px;
+  }
+}
+
+.confirm-btn2 {
+  width: 630upx;
+  height: 76upx;
+  line-height: 76upx;
+  border-radius: 50px;
+  margin-top: 40upx;
+  background: $uni-color-primary;
+  color: #fff;
+  font-size: $font-lg;
+
+  &:after {
+    border-radius: 100px;
+  }
+}
+
+.forget-section {
+  font-size: $font-sm+2upx;
+  color: $font-color-spec;
+  text-align: center;
+  margin-top: 40upx;
+}
+
+.register-section {
+  position: absolute;
+  left: 0;
+  bottom: 50upx;
+  width: 100%;
+  font-size: $font-sm+2upx;
+  color: $font-color-base;
+  text-align: center;
+
+  text {
+    color: $font-color-spec;
+    margin-left: 10upx;
+  }
+}
+
+.get-code-btn {
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  padding: 10rpx 20rpx;
+  background-color: #007aff;
+  color: #fff;
+  border-radius: 6rpx;
+}
+.get-code-btn[disabled] {
+  background-color: #ccc;
+  color: #999;
+}
 </style>

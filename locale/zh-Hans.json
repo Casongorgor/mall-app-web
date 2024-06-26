@@ -133,7 +133,7 @@
 	"login.userName": "用户名",
 	"login.userName.placeholder": "请输入用户名",
 	"login.password": "密码",
-	"login.password.placeholder": "8-18位不含特殊字符的数字、字母组合",
+	"login.password.placeholder": "請輸入8-18位由字母+數字組成的密碼",
 	"login.loginBtn": "登录",
 	"login.forgetPwd": "忘记密码?",
 	"login.noAccount": "还没有账号?",
@@ -168,5 +168,17 @@
 	"user.my.concern": "我的关注",
 	"user.my.collection": "我的收藏",
 	"user.my.assessment": "我的评价",
-	"user.my.setting": "设置"
+	"user.my.setting": "设置",
+
+	"register.topSign": "注冊新用戶",
+	"register.welcome": "欢迎新朋友",
+	"register.email": "邮箱",
+	"register.email.placeholder": "请输入邮箱",
+	"register.email.verification": "请输入有效的邮箱地址",
+	"register.verificationCode": "验证码",
+	"register.verificationCode.placeholder": "请输入验证码",
+	"register.password.verification": "請輸入8-18位由字母+數字組成的密碼",
+	"register.registerBtn": "注冊",
+	"register.retryLab": "秒后重试",
+	"register.getCode": "获取验证码"
 }

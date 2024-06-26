@@ -74,12 +74,12 @@
 			</view>
 			<!-- 浏览历史 -->
 			<view class="history-section icon">
-				<list-cell icon="icon-dizhi" iconColor="#5fcda2" title="{{$t('user.my.address')}}" @eventClick="navTo('/pages/address/address')"></list-cell>
-				<list-cell icon="icon-lishijilu" iconColor="#e07472" title="{{$t('user.my.footprints')}}" @eventClick="navTo('/pages/user/readHistory')"></list-cell>
-				<list-cell icon="icon-shoucang" iconColor="#5fcda2" title="{{$t('user.my.concern')}}" @eventClick="navTo('/pages/user/brandAttention')"></list-cell>
-				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="{{$t('user.my.collection')}}" @eventClick="navTo('/pages/user/productCollection')"></list-cell>
-				<list-cell icon="icon-pingjia" iconColor="#ee883b" title="{{$t('user.my.assessment')}}"></list-cell>
-				<list-cell icon="icon-shezhi1" iconColor="#e07472" title="{{$t('user.my.setting')}}" border="" @eventClick="navTo('/pages/set/set')"></list-cell>
+				<list-cell icon="icon-dizhi" iconColor="#5fcda2" :title="$t('user.my.address')" @eventClick="navTo('/pages/address/address')"></list-cell>
+				<list-cell icon="icon-lishijilu" iconColor="#e07472" :title="$t('user.my.footprints')" @eventClick="navTo('/pages/user/readHistory')"></list-cell>
+				<list-cell icon="icon-shoucang" iconColor="#5fcda2" :title="$t('user.my.concern')" @eventClick="navTo('/pages/user/brandAttention')"></list-cell>
+				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" :title="$t('user.my.collection')" @eventClick="navTo('/pages/user/productCollection')"></list-cell>
+				<list-cell icon="icon-pingjia" iconColor="#ee883b" :title="$t('user.my.assessment')"></list-cell>
+				<list-cell icon="icon-shezhi1" iconColor="#e07472" :title="$t('user.my.setting')" border="" @eventClick="navTo('/pages/set/set')"></list-cell>
 			</view>
 		</view>
 			
