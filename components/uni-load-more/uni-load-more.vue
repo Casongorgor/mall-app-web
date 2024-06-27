@@ -45,7 +45,7 @@
 				type: Object,
 				default () {
 					return {
-						contentdown: "上拉显示更多",
+						contentdown: this.$t('common.pushUp'),
 						contentrefresh: this.$t('common.loading'),
 						contentnomore: this.$t('common.noMoreData')
 					};

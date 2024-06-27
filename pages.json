@@ -43,6 +43,24 @@
 			}
 		},
 		{
+			"path": "pages/search/search",
+			"style": {
+				//搜索頁面
+				"navigationBarTitleText": "Search Detail",
+				"app-plus": {
+					"titleNView": {
+						"searchInput": {
+							"backgroundColor": "rgba(231, 231, 231,.7)",
+							"borderRadius": "12px",
+							"placeholder": "%home.searchInput%",
+							"disabled": false,
+							"placeholderColor": "#606266",
+							"autoFocus": true
+						}
+					}
+				}
+			}
+		},{
 			"path": "pages/product/product",
 			"style": {//详情展示
 				"navigationBarTitleText": "%page.product%",
@@ -58,7 +76,6 @@
 				"navigationBarTitleText": "%page.setting%"
 			}
 		},
-
 		{
 			"path": "pages/userinfo/userinfo",
 			"style": {//修改资料
@@ -197,7 +214,7 @@
 			"path": "pages/brand/list",
 			"style": {//推荐品牌列表
 				"enablePullDownRefresh": true,
-				"navigationBarTitleText": "推荐品牌列表"
+				"navigationBarTitleText": "%page.recommendedBrands%"
 			}
 		}, {
 			"path": "pages/product/newProductList",
@@ -215,11 +232,11 @@
 			"path": "pages/user/readHistory",
 			"style": {//我的足迹
 				"enablePullDownRefresh": true,
-				"navigationBarTitleText": "page.myFootprints",
+				"navigationBarTitleText": "%page.myFootprints%",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [{
-							"text": "清空",
+							"text": "%cart.clear%",
 							"fontSize": "16",
 							"color": "#303133",
 							"width": "46px",

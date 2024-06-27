@@ -69,6 +69,7 @@
 				cateList: [],
 				productList: [],
 				searchParam: {
+          keyword: null,
 					productCategoryId: null,
 					pageNum: 1,
 					pageSize: 6,
@@ -81,8 +82,12 @@
 			// #ifdef H5
 			this.headerTop = document.getElementsByTagName('uni-page-head')[0].offsetHeight + 'px';
 			// #endif
-			this.searchParam.productCategoryId = options.sid;
-			this.loadCateList(options.fid, options.sid);
+      if(options.keyword){
+        this.searchParam.keyword = options.keyword;
+      }else{
+        this.searchParam.productCategoryId = options.sid;
+        this.loadCateList(options.fid, options.sid);
+      }
 			this.loadData();
 		},
 		onPageScroll(e) {

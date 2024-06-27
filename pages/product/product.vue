@@ -52,25 +52,25 @@
 				<text class="yticon icon-you"></text>
 			</view>
 			<view class="c-row b-b" @click="toggleAttr">
-				<text class="tit">商品参数</text>
+				<text class="tit">{{$t('product.attr')}}</text>
 				<view class="con">
-					<text class="con t-r">查看</text>
+					<text class="con t-r">{{$t('product.view')}}</text>
 				</view>
 				<text class="yticon icon-you"></text>
 			</view>
 			<view class="c-row b-b" @click="toggleCoupon('show')">
-				<text class="tit">优惠券</text>
-				<text class="con t-r red">领取优惠券</text>
+				<text class="tit">{{$t('product.coupon')}}</text>
+				<text class="con t-r red">{{$t('product.getCoupon')}}</text>
 				<text class="yticon icon-you"></text>
 			</view>
 			<view class="c-row b-b">
-				<text class="tit">促销活动</text>
+				<text class="tit">{{$t('product.activities')}}</text>
 				<view class="con-list">
 					<text v-for="item in promotionTipList" :key="item">{{item}}</text>
 				</view>
 			</view>
 			<view class="c-row b-b">
-				<text class="tit">服务</text>
+				<text class="tit">{{$t('product.service')}}</text>
 				<view class="bz-list con">
 					<text v-for="item in serviceList" :key="item">{{item}} ·</text>
 				</view>
@@ -80,7 +80,7 @@
 		<!-- 评价 -->
 		<view class="eva-section">
 			<view class="e-header">
-				<text class="tit">评价</text>
+				<text class="tit">{{$t('product.evaluation')}}</text>
 				<text>(86)</text>
 				<text class="tip">好评率 100%</text>
 				<text class="yticon icon-you"></text>
@@ -101,7 +101,7 @@
 		<!-- 品牌信息 -->
 		<view class="brand-info">
 			<view class="d-header">
-				<text>品牌信息</text>
+				<text>{{$t('brand.info')}}</text>
 			</view>
 			<view class="brand-box" @click="navToBrandDetail()">
 				<view class="image-wrapper">
@@ -109,7 +109,8 @@
 				</view>
 				<view class="title">
 					<text>{{brand.name}}</text>
-					<text>品牌首字母：{{brand.firstLetter}}</text>
+					<text>{{$t('brand.firstLetter')}}
+            {{brand.firstLetter}}</text>
 				</view>
 			</view>
 		</view>

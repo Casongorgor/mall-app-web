@@ -7,9 +7,9 @@
 	"common.cancel": "取消",
 	"common.pushUp": "上拉显示更多",
 	"common.noMoreData": "没有更多数据了",
-	"home.searchInput": "请输入商品 如：手机",
+	"home.searchInput": "请输入关键字",
 	"home.hearder01": "专题",
-	"home.hearder02": "話題",
+	"home.hearder02": "话题",
 	"home.hearder03": "优选",
 	"home.hearder04": "特惠",
 	"home.searchText": "输入关键字搜索",
@@ -26,6 +26,9 @@
 	"home.popularLabel": "大家都赞不绝口的",
 	"home.gussULike": "猜你喜欢",
 	"home.gussULikeLabel": "你喜欢的都在这里了",
+
+	"search.clearHistory": "清空",
+	"search.history": "搜索历史",
 
 	"page.cart": "购物车",
 	"page.product": "详情展示",
@@ -83,6 +86,7 @@
 	"brand.soldout": "已售",
 	"brand.brand": "相关品牌",
 	"brand.productsNum": "商品数量：",
+	"brand.info": "品牌信息",
 
 	"cart.empty": "空空如也",
 	"cart.switchTab": "随便逛逛>",
@@ -156,6 +160,15 @@
 	"product.addCart": "加入购物车",
 	"product.selected": "已选",
 	"product.complete": "完成",
+	"product.attr": "商品参数",
+	"product.view": "查看",
+	"product.getCoupon": "领取优惠券",
+	"product.activities": "促销活动",
+	"product.services": "服务",
+	"product.coupon": "优惠券",
+	"product.evaluation": "评价",
+
+
 
 	"login.welcome": "欢迎回来！",
 	"login.userName": "用户名",

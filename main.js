@@ -4,6 +4,11 @@ import App from './App'
 import VueI18n from 'vue-i18n'// v8.x
 import en from './locale/en.json'
 import zhHans from './locale/zh-Hans.json'
+
+// import uniIcons from '@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue'
+
+
+
 const messages = {
 	en,
 	'zh-Hans': zhHans
@@ -37,7 +42,7 @@ const prePage = ()=>{
 	return prePage.$vm;
 }
 
-
+// Vue.component('uni-icons', uniIcons)
 Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;
 Vue.prototype.$api = {msg, prePage};

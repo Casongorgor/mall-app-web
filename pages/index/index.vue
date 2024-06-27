@@ -3,7 +3,7 @@
 		<!-- 小程序头部兼容 -->
 		<!-- #ifdef MP -->
 		<view class="mp-search-box">
-			<input class="ser-input" type="text" value="{{$t('home.searchText')}}" disabled />
+			<input class="ser-input" type="text" :value="$t('home.searchText')" disabled />
 		</view>
 		<!-- #endif -->
 
@@ -321,7 +321,10 @@
 		// #ifndef MP
 		// 标题栏input搜索框点击
 		onNavigationBarSearchInputClicked: async function(e) {
-			this.$api.msg('点击了搜索框');
+			// this.$api.msg('点击了搜索框');
+      uni.navigateTo({
+        url: '/pages/search/search'
+      })
 		},
 		//点击导航栏 buttons 时触发
 		onNavigationBarButtonTap(e) {
