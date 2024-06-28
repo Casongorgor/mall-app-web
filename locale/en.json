@@ -3,6 +3,7 @@
 	"common.loading": "Loading...",
 	"common.tips": "Tips",
 	"common.unloginMsg": "You are not signed in, do you want to sign in?",
+	"common.reLoginMsg": "Your login has expired, do you need to login again?",
 	"common.toLogin": "Sign in",
 	"common.cancel": "Cancel",
 	"common.pushUp": "Pull up to show more",
@@ -220,5 +221,24 @@
 	"register.password.verification": "Please enter an 8-18 alphanumerical password",
 	"register.registerBtn": "Sign Up",
 	"register.retryLab": "seconds can resend",
-	"register.getCode": "Get verify code"
+	"register.getCode": "Get verify code",
+
+	"error.code.001": "Failed to send verification code!",
+	"error.code.002": "Please select a shipping address!",
+	"error.code.003": "Insufficient stock, unable to place order!",
+	"error.code.004": "This coupon is not available!",
+	"error.code.005": "Points not available!",
+	"error.code.006": "The order does not exist or the order status is not pending paid!",
+	"error.code.007": "Insufficient inventory, no deductions available!",
+	"error.code.008": "Insufficient stock and cannot be released!",
+	"error.code.009": "Cannot confirm other people's orders!",
+	"error.code.010": "This order has not been shipped yet!",
+	"error.code.011": "Cannot delete other people's orders!",
+	"error.code.012": "Only completed or closed orders can be deleted!",
+	"error.code.013": "Coupon does not exist!",
+	"error.code.014": "The coupons have been collected!",
+	"error.code.015": "It’s not time to collect the coupon yet!",
+	"error.code.016": "You have already received this coupon!",
+	"error.code.017": "Incorrect verification code!",
+	"error.code.018": "This account does not exist!"
 }

@@ -43,18 +43,24 @@ http.interceptor.request((config, cancel) => { /* 请求之前拦截器 */
 http.interceptor.response((response) => { /* 请求之后拦截器 */
 	const res = response.data;
 	if (res.code !== 200) {
+		var errorMessage = res.message
 		//提示错误信息
+		if(res.messageCode){//增加國際化錯誤信息處理
+			errorMessage =  this.$t(res.messageCode)
+		}
 		uni.showToast({
-			title:res.message,
+			icon: 'error',
+			title: errorMessage,
 			duration:1500
 		})
+
 		//401未登录处理
 		if (res.code === 401) {
 			uni.showModal({
-				title: '提示',
-				content: '你已被登出，可以取消继续留在该页面，或者重新登录',
-				confirmText:'重新登录',
-				cancelText:'取消',
+				title: this.$t('common.tips'),
+				content: this.$t('common.reLoginMsg'),
+				confirmText:this.$t('login.loginBtn'),
+				cancelText:this.$t('common.cancel'),
 				success: function(res) {
 					if (res.confirm) {
 						uni.navigateTo({

@@ -3,6 +3,7 @@
 	"common.loading": "正在加载...",
 	"common.tips": "提示",
 	"common.unloginMsg": "你还没登录，是否要登录？",
+	"common.reLoginMsg": "你已被登出，可以取消继续留在该页面，或者重新登录",
 	"common.toLogin": "去登录",
 	"common.cancel": "取消",
 	"common.pushUp": "上拉显示更多",
@@ -221,5 +222,24 @@
 	"register.password.verification": "請輸入8-18位由字母+數字組成的密碼",
 	"register.registerBtn": "注冊",
 	"register.retryLab": "秒后重试",
-	"register.getCode": "获取验证码"
+	"register.getCode": "获取验证码",
+
+	"error.code.001": "發送驗證碼失敗",
+	"error.code.002": "请选择收货地址！",
+	"error.code.003": "库存不足，无法下单",
+	"error.code.004": "该优惠券不可用",
+	"error.code.005": "积分不可用",
+	"error.code.006": "订单不存在或订单状态不是未支付！",
+	"error.code.007": "库存不足，无法扣减！",
+	"error.code.008": "库存不足，无法释放！",
+	"error.code.009": "不能确认他人订单！",
+	"error.code.010": "该订单还未发货！",
+	"error.code.011": "不能删除他人订单！",
+	"error.code.012": "只能删除已完成或已关闭的订单！",
+	"error.code.013": "优惠券不存在",
+	"error.code.014": "优惠券已经领完了",
+	"error.code.015": "优惠券还没到领取时间",
+	"error.code.016": "您已经领取过该优惠券",
+	"error.code.017": "验证码错误",
+	"error.code.018": "该账号不存在"
 }
