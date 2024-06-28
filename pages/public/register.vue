@@ -21,6 +21,17 @@
       </view>
       <view class="input-content">
         <view class="input-item">
+          <text class="tit">{{$t('address.country')}}</text>
+<!--          <uni-combox-->
+<!--              v-model="countryCode" :candidates="countryList" placeholder="请选择所在国家" emptyTips="并未找到对应的国家名称" :border="false"-->
+<!--          ></uni-combox>-->
+          <uni-data-select
+              :placeholder="$t('address.country.placeholder')"
+              v-model="countryCode"
+              :localdata="countryList"
+          ></uni-data-select>
+        </view>
+        <view class="input-item">
           <text class="tit">{{$t('register.email')}}</text>
           <input type="text" v-model="email" :placeholder="$t('register.email.placeholder')" maxlength="100"
                  @input="validateInput"/>
@@ -50,9 +61,27 @@
 
 <script>
 import {getVerifyCode, register} from "../../api/member";
+import UniDataSelect from "../../components/uni-data-select.vue";
+import UniCombox from "../../components/uni-combox.vue";
+import {COUNTRIES} from "../../utils/countries";
 
   export default {
+    components: {UniCombox, UniDataSelect},
     data() {
+
+      var countryArrays = []
+      if(this.$i18n.locale === 'zh-Hans'){
+        countryArrays =COUNTRIES.map(obj => ({
+          text: obj.chinese,
+          value: obj.english
+        }));
+      }else{
+        countryArrays =COUNTRIES.map(obj => ({
+          text: obj.english,
+          value: obj.english
+        }));
+      }
+      // console.log(countryArrays);
       return {
         email: '',
         username: '',
@@ -61,7 +90,9 @@ import {getVerifyCode, register} from "../../api/member";
         codeButtonDisabled: false,
         codeButtonText: this.$t('register.getCode'),
         countdownTimer: null,
-        registerDisable: true
+        registerDisable: true,
+        countryCode: "",
+        countryList: countryArrays
       }
     },
 		onLoad() {

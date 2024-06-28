@@ -19,6 +19,17 @@
 			</text>
 			<text class="yticon icon-shouhuodizhi" @click="chooseLocation"></text>
 		</view> -->
+    <view class="row b-b">
+      <text class="tit">{{$t('address.country')}}</text>
+      <!--          <uni-combox-->
+      <!--              v-model="countryCode" :candidates="countryList" placeholder="请选择所在国家" emptyTips="并未找到对应的国家名称" :border="false"-->
+      <!--          ></uni-combox>-->
+      <uni-data-select
+          :placeholder="$t('address.country.placeholder')"
+          v-model="addressData.countryCode"
+          :localdata="countryList"
+      ></uni-data-select>
+    </view>
 		<view class="row b-b">
 			<text class="tit">{{$t('address.area')}}</text>
 			<input class="input" type="text" v-model="addressData.prefixAddress" :placeholder="$t('address.area.placeholder')" placeholder-class="placeholder" />
@@ -42,8 +53,23 @@
 		updateAddress,
 		fetchAddressDetail
 	} from '@/api/address.js';
+  import UniDataSelect from "../../components/uni-data-select.vue";
+  import {COUNTRIES} from "../../utils/countries";
 	export default {
+    components: {UniDataSelect},
 		data() {
+      var countryArrays = []
+      if(this.$i18n.locale === 'zh-Hans'){
+        countryArrays =COUNTRIES.map(obj => ({
+          text: obj.chinese,
+          value: obj.english
+        }));
+      }else{
+        countryArrays =COUNTRIES.map(obj => ({
+          text: obj.english,
+          value: obj.english
+        }));
+      }
 			return {
 				addressData: {
 					name: '',
@@ -54,8 +80,10 @@
 					province: '',
 					city: '',
 					region: '',
-					prefixAddress: ''
-				}
+					prefixAddress: '',
+          countryCode: null
+				},
+        countryList: countryArrays
 			}
 		},
 		onLoad(option) {

@@ -14,8 +14,8 @@
       <view class="history-clear" @click="clearSearchHistory">
 
         <text>{{ $t('search.clearHistory') }}</text>
-<!--        <uni-icons type="trash" size="18" color="#999"></uni-icons>-->
-        <image src="../../static/trash.png" style="width: 24px;height: 24px"></image>
+        <uni-icons type="trash" size="18" color="#999"></uni-icons>
+<!--        <image src="../../static/trash.png" style="width: 24px;height: 24px"></image>-->
       </view>
       <view class="history-card-container">
         <view class="history-card" v-for="item in searchHistory" @click="selectHistory(item)">
@@ -48,8 +48,10 @@
 
 <script>
 import {fetchRecommendProductList} from "../../api/home";
+import UniIcons from "../../components/uni-icons/uni-icons.vue";
 
 export default {
+  components: {UniIcons},
   data() {
     return {
       showHistory: true,
@@ -139,7 +141,7 @@ export default {
   //padding: 16px;
 }
 .search-history {
-  padding: 16px;
+  padding: 12px;
 }
 
 .history-clear {

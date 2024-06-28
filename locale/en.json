@@ -78,6 +78,8 @@
 	"address.verification.detail": "Please input detail address",
 	"address.success.update": "Address create successfully!",
 	"address.success.create": "Address update successfully!",
+	"address.country": "Country",
+	"address.country.placeholder": "Please select Country",
 
 	"brand.firstLetter": "Brand first letter：",
 	"brand.story": "Brand story",
