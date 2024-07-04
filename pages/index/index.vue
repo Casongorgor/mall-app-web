@@ -330,13 +330,15 @@
 		onNavigationBarButtonTap(e) {
 			const index = e.index;
 			if (index === 0) {
-				this.$api.msg('点击了扫描');
+
         if(this.$i18n.locale == 'en'){
           this.$i18n.locale = 'zh-Hans'
           uni.setLocale('zh-Hans')
+          this.$api.msg('切換語言');
         }else{
           this.$i18n.locale = 'en'
           uni.setLocale('en')
+          this.$api.msg('Switch languages');
         }
 
 
