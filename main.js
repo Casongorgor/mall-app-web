@@ -47,13 +47,14 @@ Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;
 Vue.prototype.$api = {msg, prePage};
 
-Vue.use(VueI18n)
-const i18n = new VueI18n(i18nConfig)
+Vue.use(VueI18n, {
+	i18n: (key, value) => i18n.t(key, value)
+})
+export const i18n = new VueI18n(i18nConfig)
 Vue.config.productionTip = false
 
 App.mpType = 'app'
-const app = new Vue({
+new Vue({
 	i18n,
-    ...App
-})
-app.$mount()
+	...App
+}).$mount('#app')

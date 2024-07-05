@@ -8,6 +8,7 @@
 	"common.cancel": "取消",
 	"common.pushUp": "上拉显示更多",
 	"common.noMoreData": "没有更多数据了",
+	"common.sysError": "网络异常，请稍后再试",
 	"home.searchInput": "请输入关键字",
 	"home.hearder01": "专题",
 	"home.hearder02": "话题",
@@ -225,6 +226,11 @@
 	"register.registerBtn": "注册",
 	"register.retryLab": "秒后重试",
 	"register.getCode": "获取验证码",
+
+	"changePassword.password": "新密码",
+	"changePassword.title": "修改密码",
+	"changePassword.titleTips": "修改密码",
+	"changePassword.submitBtn": "修改密码",
 
 	"error.code.001": "发送验证码失败",
 	"error.code.002": "请选择收货地址！",

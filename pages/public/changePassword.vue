@@ -5,56 +5,40 @@
 		<view class="right-top-sign"></view>
 		<!-- 设置白色背景防止软键盘把下部绝对定位元素顶上来盖住输入框等 -->
     <view class="wrapper">
-
-      <view class="left-top-sign">{{ $t('register.topSign') }}</view>
+      <view class="left-top-sign">{{ $t("changePassword.titleTips") }}</view>
 
       <view class="welcome">
-        {{ $t('register.welcome') }}
+        {{ $t("changePassword.title") }}
       </view>
       <view class="input-content">
-        <view class="input-item">
-          <text class="tit">{{ $t('address.country') }}</text>
-          <!--          <uni-combox-->
-          <!--              v-model="countryCode" :candidates="countryList" placeholder="请选择所在国家" emptyTips="并未找到对应的国家名称" :border="false"-->
-          <!--          ></uni-combox>-->
-          <uni-data-select
-              :placeholder="$t('address.country.placeholder')"
-              v-model="countryCode"
-              :localdata="countryList"
-          ></uni-data-select>
-        </view>
-        <view class="input-item">
-          <text class="tit">{{ $t('register.email') }}</text>
-          <input type="text" v-model="email" :placeholder="$t('register.email.placeholder')" maxlength="100"
-                 @input="validateInput"/>
-        </view>
-        <view class="input-item">
-          <text class="tit">{{ $t('login.userName') }}</text>
-          <input type="text" v-model="username" :placeholder="$t('login.userName.placeholder')" maxlength="50"
-                 @input="validateInput"/>
-        </view>
-        <view class="input-item">
-          <text class="tit">{{ $t('login.password') }}</text>
-          <input type="text" v-model="password" :placeholder="$t('login.password.placeholder')"
-                 placeholder-class="input-empty" maxlength="20"
-                 password @confirm="toLogin" @input="validateInput"/>
-        </view>
-        <view class="input-item">
-          <text class="tit">{{ $t('register.verificationCode') }}</text>
-          <input class="text" v-model="verificationCode" :placeholder="$t('register.verificationCode.placeholder')"
-                 maxlength="8"
-                 @input="validateInput"/>
-        </view>
+      <view class="input-item">
+        <text class="tit">{{ $t('register.email') }}</text>
+        <input type="text" v-model="email" :placeholder="$t('register.email.placeholder')" maxlength="100"
+               @input="validateInput"/>
       </view>
 
+      <view class="input-item">
+        <text class="tit">{{ $t('register.verificationCode') }}</text>
+        <input class="text" v-model="verificationCode" :placeholder="$t('register.verificationCode.placeholder')"
+               maxlength="8"
+               @input="validateInput"/>
+      </view>
+      <view class="input-item">
+        <text class="tit">{{ $t('changePassword.password') }}</text>
+        <input type="text" v-model="password" :placeholder="$t('login.password.placeholder')"
+               placeholder-class="input-empty" maxlength="20"
+               password @confirm="toLogin" @input="validateInput"/>
+      </view>
     </view>
+    </view>
+
     <button class="confirm-btn" :disabled="codeButtonDisabled" @click="getVerificationCode">{{ codeButtonText }}</button>
-    <button class="confirm-btn" @click="register" :disabled="registerDisable">{{$t('register.registerBtn')}}</button>
-	</view>
+    <button class="confirm-btn" @click="changePassword" :disabled="registerDisable">{{$t("changePassword.submitBtn")}}</button>
+  </view>
 </template>
 
 <script>
-import {getVerifyCode, register} from "../../api/member";
+import {getVerifyCode, register, updatePassword} from "../../api/member";
 import UniDataSelect from "../../components/uni-data-select.vue";
 import UniCombox from "../../components/uni-combox.vue";
 import {COUNTRIES} from "../../utils/countries";
@@ -84,9 +68,7 @@ import {COUNTRIES} from "../../utils/countries";
         codeButtonDisabled: false,
         codeButtonText: this.$t('register.getCode'),
         countdownTimer: null,
-        registerDisable: true,
-        countryCode: "",
-        countryList: countryArrays
+        registerDisable: true
       }
     },
 		onLoad() {
@@ -137,7 +119,7 @@ import {COUNTRIES} from "../../utils/countries";
         this.codeButtonDisabled = false
         this.codeButtonText = this.$t('register.getCode')
       },
-      register() {
+      changePassword() {
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,18}$/
         if (this.password && passwordRegex.test(this.password)) {
         } else {
@@ -150,26 +132,24 @@ import {COUNTRIES} from "../../utils/countries";
 
         this.registerDisable = true
         // 註冊的邏輯,包括驗證碼的驗證
-        register({
+        updatePassword({
           email: this.email,
           password:this.password,
-          username: this.username,
-          authCode: this.verificationCode,
-          country: this.countryCode
+          authCode: this.verificationCode
         }).then(response => {
-          console.log('註冊成功，跳轉到登錄頁面...')
+          console.log('修改密碼成功，跳轉到登錄頁面...')
           uni.showToast({
-            title: '註冊成功',
+            title: '密碼修改成功',
             icon: "success"
           });
           uni.navigateTo({url:'/pages/public/login'});
         }).catch(() => {
           this.registerDisable = false
-          uni.navigateTo({url:'/pages/public/login'});
+          // uni.navigateTo({url:'/pages/public/login'});
         });
       },
       validateInput(){
-        if(this.email && this.password && this.verificationCode && this.username){
+        if(this.email && this.password && this.verificationCode){
           this.registerDisable = false
         }else{
           this.registerDisable = true

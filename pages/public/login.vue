@@ -22,7 +22,7 @@
 			</view>
 			<button class="confirm-btn" @click="toLogin" :disabled="logining">{{$t('login.loginBtn')}}</button>
 <!--			<button class="confirm-btn2" @click="toRegist" >获取体验账号</button>-->
-			<view class="forget-section" @click="toRegist">
+			<view class="forget-section" @click="toChangePassword">
         {{$t('login.forgetPwd')}}
 			</view>
 		</view>
@@ -60,6 +60,9 @@
 			toRegist() {
 				uni.navigateTo({url:'/pages/public/register'});
 			},
+      toChangePassword() {
+        uni.navigateTo({url:'/pages/public/changePassword'});
+      },
 			async toLogin() {
 				this.logining = true;
 				memberLogin({

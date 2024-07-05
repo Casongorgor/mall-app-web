@@ -8,6 +8,7 @@
 	"common.cancel": "Cancel",
 	"common.pushUp": "Pull up to show more",
 	"common.noMoreData": "No more data",
+	"common.sysError": "Network abnormal, please try again later",
 	"home.searchInput": "Please enter keyword",
 	"home.hearder01": "Special topics",
 	"home.hearder02": "Topic",
@@ -224,6 +225,12 @@
 	"register.registerBtn": "Sign Up",
 	"register.retryLab": "seconds can resend",
 	"register.getCode": "Get verify code",
+
+	"changePassword.password": "New password",
+	"changePassword.title": "Change Password",
+	"changePassword.titleTips": "Change Pwd",
+	"changePassword.submitBtn": "Change password",
+
 
 	"error.code.001": "Failed to send verification code!",
 	"error.code.002": "Please select a shipping address!",

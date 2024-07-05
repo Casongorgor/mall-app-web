@@ -107,6 +107,16 @@
 				}
 			}
 		}, {
+			"path": "pages/public/changePassword",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false,
+					"animationType": "slide-in-bottom"
+				}
+			}
+		}, {
 			"path": "pages/user/user",
 			"style": {//我的
 				"navigationBarTitleText": "%page.mypage%",

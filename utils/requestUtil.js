@@ -1,8 +1,7 @@
 import Request from '@/js_sdk/luch-request/request.js'
 import { API_BASE_URL} from '@/utils/appConfig.js';
-
+import { i18n } from '@/main.js'
 const http = new Request()
-
 http.setConfig((config) => { /* 设置全局配置 */
 	config.baseUrl = API_BASE_URL /* 根域名不同 */
 	config.header = {
@@ -46,7 +45,7 @@ http.interceptor.response((response) => { /* 请求之后拦截器 */
 		var errorMessage = res.message
 		//提示错误信息
 		if(res.messageCode){//增加國際化錯誤信息處理
-			errorMessage =  this.$t(res.messageCode)
+			errorMessage =  i18n.t(res.messageCode)
 		}
 		uni.showToast({
 			icon: 'error',
@@ -57,10 +56,10 @@ http.interceptor.response((response) => { /* 请求之后拦截器 */
 		//401未登录处理
 		if (res.code === 401) {
 			uni.showModal({
-				title: this.$t('common.tips'),
-				content: this.$t('common.reLoginMsg'),
-				confirmText:this.$t('login.loginBtn'),
-				cancelText:this.$t('common.cancel'),
+				title: i18n.t('common.tips'),
+				content: i18n.t('common.reLoginMsg'),
+				confirmText:i18n.t('login.loginBtn'),
+				cancelText:i18n.t('common.cancel'),
 				success: function(res) {
 					if (res.confirm) {
 						uni.navigateTo({
@@ -78,9 +77,9 @@ http.interceptor.response((response) => { /* 请求之后拦截器 */
 	}
 }, (response) => {
 	//提示错误信息
-	console.log('response error', response);
 	uni.showToast({
-		title:response.errMsg,
+		icon: 'error',
+		title: i18n.t('common.sysError'),
 		duration:1500
 	})
 	return Promise.reject(response);

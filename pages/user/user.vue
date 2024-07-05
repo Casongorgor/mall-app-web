@@ -8,7 +8,7 @@
 					<image class="portrait" :src="userInfo.icon || '/static/missing-face.png'"></image>
 				</view>
 				<view class="info-box">
-					<text class="username">{{userInfo.nickname || $t('user.tourists')}}</text>
+					<text class="username">{{userInfo.username || $t('user.tourists')}}</text>
 				</view>
 			</view>
 			<view class="vip-card-box">
@@ -108,6 +108,7 @@
 			}
 		},
 		onLoad(){
+
 		},
 		onShow(){
 			if(this.hasLogin){

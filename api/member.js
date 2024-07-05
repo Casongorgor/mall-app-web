@@ -28,6 +28,18 @@ export function register(data) {
 	})
 }
 
+export function updatePassword(data) {
+	return request({
+		method: 'POST',
+		url: '/sso/updatePassword',
+		header: {
+			'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+		},
+		data: data
+	})
+}
+
+
 export function memberInfo() {
 	return request({
 		method: 'GET',
