@@ -5,7 +5,7 @@
 			"path": "pages/index/index",
 			"style": {
 				// #ifdef MP 
-				"navigationBarTitleText": "Mall商城",
+				"navigationBarTitleText": "Sunshine Sky Mall",
 				//"navigationStyle": "custom",
 				// #endif 
 				"enablePullDownRefresh": true,
@@ -16,7 +16,7 @@
 							"backgroundColor": "rgba(231, 231, 231,.7)",
 							"borderRadius": "12px",
 							"placeholder": "%home.searchInput%",
-							"disabled": true,
+							"disabled": false,
 							"placeholderColor": "#606266"
 						},
 						"buttons": [
@@ -283,7 +283,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "mall-app-web",
+		"navigationBarTitleText": "Sunshine Sky Mall",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#f8f8f8"
 	},

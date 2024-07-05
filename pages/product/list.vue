@@ -114,6 +114,16 @@
 					this.cateList = response.data;
 				})
 			},
+      removeNullProperties(obj) {
+        for (let prop in obj) {
+          if (obj[prop] === null) {
+            delete obj[prop];
+          } else if (typeof obj[prop] === 'object') {
+            removeNullProperties(obj[prop]);
+          }
+        }
+        return obj;
+      },
 			//加载商品 ，带下拉刷新和上滑加载
 			async loadData(type = 'add', loading) {
 				//没有更多直接返回
@@ -143,7 +153,8 @@
 						this.searchParam.sort = 4;
 					}
 				}
-				searchProductList(this.searchParam).then(response => {
+
+				searchProductList(this.removeNullProperties(this.searchParam)).then(response => {
 					let productList = response.data.list;
 					if (response.data.list.length === 0) {
 						//没有更多了

@@ -70,7 +70,7 @@
 				</view>
 			</view>
 			<view class="c-row b-b">
-				<text class="tit">{{$t('product.service')}}</text>
+				<text class="tit">{{$t('product.services')}}</text>
 				<view class="bz-list con">
 					<text v-for="item in serviceList" :key="item">{{item}} ·</text>
 				</view>

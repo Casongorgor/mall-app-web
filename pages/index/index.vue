@@ -3,7 +3,7 @@
 		<!-- 小程序头部兼容 -->
 		<!-- #ifdef MP -->
 		<view class="mp-search-box">
-			<input class="ser-input" type="text" :value="$t('home.searchText')" disabled />
+			<input class="ser-input" type="text" :value="$t('home.searchText')" disabled onclick="searchClick()"/>
 		</view>
 		<!-- #endif -->
 
@@ -201,6 +201,14 @@
 		},
 		onLoad() {
 			this.loadData();
+      //使用後加時間的方式，處理默認搜索框在Chrome意外的瀏覽器點擊範圍小的問題
+      const clickableInputs = document.querySelectorAll('.uni-page-head-search > uni-input > div > form > input');
+      // 遍历这些 input 元素,并为其添加点击事件处理程序
+      clickableInputs.forEach((input, index) => {
+        input.addEventListener('click', () => {
+          this.searchClick()
+        });
+      });
 		},
 		//下拉刷新
 		onPullDownRefresh(){
@@ -317,6 +325,12 @@
 					url: `/pages/product/hotProductList`
 				})
 			},
+
+      searchClick(){
+        uni.navigateTo({
+          url: '/pages/search/search'
+        })
+      }
 		},
 		// #ifndef MP
 		// 标题栏input搜索框点击
@@ -328,6 +342,7 @@
 		},
 		//点击导航栏 buttons 时触发
 		onNavigationBarButtonTap(e) {
+      console.log(e)
 			const index = e.index;
 			if (index === 0) {
 
