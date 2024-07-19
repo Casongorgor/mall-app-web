@@ -4,7 +4,7 @@
 			<view class="wrapper">
 				<view class="address-box">
 					<text v-if="item.defaultStatus==1" class="tag">{{$t('address.default')}}</text>
-					<text class="address">{{item.province}} {{item.city}} {{item.region}} {{item.detailAddress}}</text>
+					<text class="address">{{item.country}} {{item.area}} {{item.detailAddress}}</text>
 				</view>
 				<view class="u-box">
 					<text class="name">{{item.name}}</text>

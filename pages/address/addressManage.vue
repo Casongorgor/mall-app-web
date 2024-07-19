@@ -8,10 +8,10 @@
 			<text class="tit">{{$t('address.phone')}}</text>
 			<input class="input" type="number" v-model="addressData.phoneNumber" :placeholder="$t('address.phone.placeholder')" placeholder-class="placeholder" />
 		</view>
-		<view class="row b-b">
-			<text class="tit">{{$t('address.zipCode')}}</text>
-			<input class="input" type="number" v-model="addressData.postCode" :placeholder="$t('address.zipCode.placeholder')" placeholder-class="placeholder" />
-		</view>
+<!--		<view class="row b-b">-->
+<!--			<text class="tit">{{$t('address.zipCode')}}</text>-->
+<!--			<input class="input" type="number" v-model="addressData.postCode" :placeholder="$t('address.zipCode.placeholder')" placeholder-class="placeholder" />-->
+<!--		</view>-->
 <!-- 		<view class="row b-b">
 			<text class="tit">所在区域</text>
 			<text @click="chooseLocation" class="input">
@@ -26,22 +26,27 @@
       <!--          ></uni-combox>-->
       <uni-data-select
           :placeholder="$t('address.country.placeholder')"
-          v-model="addressData.countryCode"
+          v-model="addressData.country"
           :localdata="countryList"
       ></uni-data-select>
     </view>
 		<view class="row b-b">
 			<text class="tit">{{$t('address.area')}}</text>
-			<input class="input" type="text" v-model="addressData.prefixAddress" :placeholder="$t('address.area.placeholder')" placeholder-class="placeholder" />
+			<input class="input" type="text" v-model="addressData.area" :placeholder="$t('address.area.placeholder')" placeholder-class="placeholder" />
 		</view>
 		<view class="row b-b">
 			<text class="tit">{{$t('address.detail')}}</text>
 			<input class="input" type="text" v-model="addressData.detailAddress" :placeholder="$t('address.detail.placeholder')" placeholder-class="placeholder" />
 		</view>
 
+    <view class="row b-b">
+      <text class="tit"></text>
+      <input class="input" type="text" v-model="addressData.detailAddress2" :placeholder="$t('address.detail.placeholder')" placeholder-class="placeholder" />
+    </view>
+
 		<view class="row default-row">
 			<text class="tit">{{$t('address.setToDefault')}}</text>
-			<switch :checked="addressData.defaultStatus==1" color="#fa436a" @change="switchChange" />
+			<switch :checked="addressData.defaultStatus==1" color="#177f66" @change="switchChange" />
 		</view>
 		<button class="add-btn" @click="confirm">{{$t('address.confirm')}}</button>
 	</view>
@@ -76,12 +81,14 @@
 					phoneNumber: '',
 					postCode: '',
 					detailAddress: '',
+          detailAddress2:'',
 					default: false,
 					province: '',
 					city: '',
 					region: '',
+          area: '',
 					prefixAddress: '',
-          countryCode: null
+          country: null
 				},
         countryList: countryArrays
 			}
@@ -92,7 +99,7 @@
 				title = this.$t('address.title.edit');
 				fetchAddressDetail(option.id).then(response=>{
 					this.addressData = response.data;
-					this.addressData.prefixAddress = this.addressData.province+this.addressData.city+this.addressData.region;
+					// this.addressData.prefixAddress = this.addressData.province+this.addressData.city+this.addressData.region;
 				});
 			}
 			this.manageType = option.type;
@@ -136,17 +143,21 @@
 					this.$api.msg(this.$t('address.verification.name'));
 					return;
 				}
-				if (!/(^1[3|4|5|7|8][0-9]{9}$)/.test(data.phoneNumber)) {
-					this.$api.msg(this.$t('address.verification.phone'));
-					return;
-				}
-				if (!data.prefixAddress) {
+				// if (!/(^1[3|4|5|7|8][0-9]{9}$)/.test(data.phoneNumber)) {
+				// 	this.$api.msg(this.$t('address.verification.phone'));
+				// 	return;
+				// }
+        if (!data.phoneNumber) {
+        	this.$api.msg(this.$t('address.verification.phone'));
+        	return;
+        }
+				if (!data.area) {
 					this.$api.msg(this.$t('address.verification.area'));
 					return;
 				}
-				this.covertAdderss(data.prefixAddress);
-				if (!data.province) {
-					this.$api.msg(this.$t('address.verification.province'));
+				// this.covertAdderss(data.prefixAddress);
+				if (!data.country) {
+					this.$api.msg(this.$t('address.country.placeholder'));
 					return;
 				}
 				if (!data.detailAddress) {

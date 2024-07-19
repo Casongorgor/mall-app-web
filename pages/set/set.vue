@@ -15,7 +15,7 @@
 		
 		<view class="list-cell m-t">
 			<text class="cell-tit">{{$t('setting.messagePush')}}</text>
-			<switch checked color="#fa436a" @change="switchChange" />
+			<switch checked color="#177f66" @change="switchChange" />
 		</view>
 		<view class="list-cell m-t b-b" @click="navTo('清除缓存')" hover-class="cell-hover" :hover-stay-time="50">
 			<text class="cell-tit">{{$t('setting.clearCache')}}</text>

@@ -145,7 +145,7 @@
 	"order.payType": "Payment type",
 	"order.totalPaymentAmount": "Total amount",
 	"order.paymentTime": "Time of payment",
-	"order.shouldPayAmount": "Amount payable",
+	"order.shouldPayAmount": "Payable",
 
 	"product.relatedProducts": "Products",
 	"product.soldOut": "sold out",
@@ -249,5 +249,6 @@
 	"error.code.015": "It’s not time to collect the coupon yet!",
 	"error.code.016": "You have already received this coupon!",
 	"error.code.017": "Incorrect verification code!",
-	"error.code.018": "This account does not exist!"
+	"error.code.018": "This account does not exist!",
+	"error.code.019": "Username or Password is incorrect!"
 }

@@ -13,8 +13,8 @@
 						<text class="name">{{order.receiverName}}</text>
 						<text class="mobile">{{order.receiverPhone}}</text>
 					</view>
-					<text class="address">{{order.receiverProvince}} {{order.receiverCity}} {{order.receiverRegion}}
-						{{order.receiverDetailAddress}}</text>
+					<text class="address">{{order.receiverCountry}} {{order.receiverArea}}
+						{{order.receiverDetailAddress}} {{order.receiverDetailAddress2}}</text>
 				</view>
 			</view>
 

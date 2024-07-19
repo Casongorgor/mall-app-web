@@ -305,7 +305,7 @@
 			.attr {
 				font-size: $font-sm + 2upx;
 				color: $font-color-light;
-				height: 50upx;
+				//height: 50upx;
 				line-height: 50upx;
 			}
 

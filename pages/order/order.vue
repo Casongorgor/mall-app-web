@@ -17,7 +17,7 @@
 					<view v-for="(item,index) in orderList" :key="index" class="order-item">
 						<view class="i-top b-b">
 							<text class="time" @click="showOrderDetail(item.id)">{{item.createTime | formatDateTime}}</text>
-							<text class="state" :style="{color: '#fa436a'}">{{item.status | formatStatus}}</text>
+							<text class="state" :style="{color: '#177f66'}">{{item.status | formatStatus}}</text>
 							<text v-if="item.status===3||item.status===4" class="del-btn yticon icon-iconfontshanchu1" @click="deleteOrder(item.id)"></text>
 						</view>
 						<view class="goods-box-single" v-for="(orderItem, itemIndex) in item.orderItemList"
@@ -60,6 +60,7 @@
 <script>
 	import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
 	import empty from "@/components/empty";
+  import { i18n } from '@/main.js'
 	import {
 		formatDate
 	} from '@/utils/date';
@@ -126,21 +127,21 @@
 		filters: {
 			formatStatus(status) {
 				let statusTip = '';
-				switch (+status) {
+				switch (status) {
 					case 0:
-						statusTip = this.$t('order.statusTip00');
+						statusTip = i18n.t('order.statusTip00');
 						break;
 					case 1:
-						statusTip = this.$t('order.statusTip01');
+						statusTip = i18n.t('order.statusTip01');
 						break;
 					case 2:
-						statusTip = this.$t('order.statusTip02');
+						statusTip = i18n.t('order.statusTip02');
 						break;
 					case 3:
-						statusTip = this.$t('order.statusTip03');
+						statusTip = i18n.t('order.statusTip03');
 						break;
 					case 4:
-						statusTip = this.$t('order.statusTip04');
+						statusTip = i18n.t('order.statusTip04');
 						break;
 				}
 				return statusTip;
@@ -216,7 +217,7 @@
 				    success: function (res) {
 				        if (res.confirm) {
 				            uni.showLoading({
-				            	title: this.$t("order.message.wait")
+				            	title: i18n.t("order.message.wait")
 				            })
 				            deleteUserOrder({orderId:orderId}).then(response=>{
 				            	uni.hideLoading();
@@ -237,7 +238,7 @@
 				    success: function (res) {
 				        if (res.confirm) {
 				            uni.showLoading({
-				            	title: this.$t("order.message.wait")
+				            	title: i18n.t("order.message.wait")
 				            })
 				            cancelUserOrder({orderId:orderId}).then(response=>{
 				            	uni.hideLoading();
@@ -264,7 +265,7 @@
 				    success: function (res) {
 				        if (res.confirm) {
 				            uni.showLoading({
-                      title: this.$t("order.message.wait")
+                      title: i18n.t("order.message.wait")
 				            })
 				            confirmReceiveOrder({orderId:orderId}).then(response=>{
 				            	uni.hideLoading();

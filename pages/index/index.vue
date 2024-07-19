@@ -181,7 +181,7 @@
 		data() {
 			return {
 				titleNViewBackground: '',
-				titleNViewBackgroundList: ['rgb(203, 87, 60)', 'rgb(205, 215, 218)'],
+				titleNViewBackgroundList: ['rgb(23 128 102)', 'rgb(205, 215, 218)'],
 				swiperCurrent: 0,
 				swiperLength: 0,
 				carouselList: [],

@@ -9,7 +9,7 @@
 						<text class="name">{{currentAddress.name}}</text>
 						<text class="mobile">{{currentAddress.phoneNumber}}</text>
 					</view>
-					<text class="address">{{currentAddress.province}} {{currentAddress.city}} {{currentAddress.region}}
+					<text class="address">{{currentAddress.country}} {{currentAddress.area}}
 						{{currentAddress.detailAddress}}</text>
 				</view>
 				<text class="yticon icon-you"></text>
