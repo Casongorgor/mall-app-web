@@ -38,7 +38,7 @@
 						</view>
 						<view class="action-box b-t" v-if="item.status == 0">
 							<button class="action-btn" @click="cancelOrder(item.id)">{{$t('order.cancelOrder')}}</button>
-							<button class="action-btn recom" @click="payOrder(item.id)">{{$t('order.payOrder')}}</button>
+<!--							<button class="action-btn recom" @click="payOrder(item.id)">{{$t('order.payOrder')}}</button>-->
 						</view>
 						<view class="action-box b-t" v-if="item.status == 2">
 							<button class="action-btn" >{{$t('order.checkLogistics')}}</button>

@@ -139,7 +139,7 @@
 			</view>
 
 			<view class="action-btn-group">
-				<button type="primary" class=" action-btn no-border buy-now-btn" @click="buy">{{$t('product.buyNow')}}</button>
+<!--				<button type="primary" class=" action-btn no-border buy-now-btn" @click="buy">{{$t('product.buyNow')}}</button>-->
 				<button type="primary" class=" action-btn no-border add-cart-btn" @click="addToCart">{{$t('product.addCart')}}</button>
 			</view>
 		</view>
@@ -660,7 +660,7 @@
 				};
 				addCartItem(cartItem).then(response => {
 					uni.showToast({
-						title: response.message,
+						title: this.$t('common.success'),
 						duration: 1500
 					})
 				});

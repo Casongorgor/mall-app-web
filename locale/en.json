@@ -1,4 +1,5 @@
 {
+	"common.success": "Success",
 	"common.language": "EN",
 	"common.loading": "Loading...",
 	"common.tips": "Tips",
@@ -115,8 +116,9 @@
 	"order.submit": "Submit order",
 	"order.coupon.expirationDate": "Expiration Date",
 	"order.tips": "Tips",
-	"order.afterSubmitMsg": "The order was created successfully. Do you want to pay immediately?",
+	"order.afterSubmitMsg": "We have received your order request and will confirm it with you and complete the offline payment within 48 hours. Please wait patiently.",
 	"order.afterSubmitMsg.pay": "Pay",
+	"order.afterSubmitMsg.ok": "Ok",
 	"order.afterSubmitMsg.cancel": "Cancel",
 	"order.total": "Total",
 	"order.commodity": "products, need pay",
@@ -146,6 +148,14 @@
 	"order.totalPaymentAmount": "Total amount",
 	"order.paymentTime": "Time of payment",
 	"order.shouldPayAmount": "Payable",
+	"order.payType.Alipay": "Alipay",
+	"order.payType.WeChat": "WeChat",
+	"order.payType.offLine": "Offline",
+	"order.payType.unPay": "Un-pay",
+
+	"order.delivery.company": "Delivery Company",
+	"order.delivery.sn": "Delivery SN",
+	"order.delivery.dateTime": "Delivery Time",
 
 	"product.relatedProducts": "Products",
 	"product.soldOut": "sold out",

@@ -229,24 +229,34 @@
 				}
 				generateOrder(orderParam).then(response => {
 					let orderId = response.data.order.id;
-					uni.showModal({
-						title: this.$t('order.tips'),
-						content: this.$t('order.afterSubmitMsg'),
-            confirmText: this.$t('order.afterSubmitMsg.pay'),
-						cancelText: this.$t('order.afterSubmitMsg.cancel'),
-						success: function(res) {
-							if (res.confirm) {
-								uni.redirectTo({
-									url: `/pages/money/pay?orderId=${orderId}`
-								})
-							} else if (res.cancel) {
-								console.log("cancel")
-								uni.redirectTo({
-									url: '/pages/order/order?state=0'
-								})
-							}
-						}
-					});
+          uni.showModal({
+            title: this.$t('order.tips'),
+            content: this.$t('order.afterSubmitMsg'),
+            confirmText: this.$t('order.afterSubmitMsg.ok'),
+            success: function(res) {
+              uni.redirectTo({
+                url: '/pages/order/order?state=0'
+              })
+            }
+          });
+					// uni.showModal({
+					// 	title: this.$t('order.tips'),
+					// 	content: this.$t('order.afterSubmitMsg'),
+          //   confirmText: this.$t('order.afterSubmitMsg.pay'),
+					// 	cancelText: this.$t('order.afterSubmitMsg.cancel'),
+					// 	success: function(res) {
+					// 		if (res.confirm) {
+					// 			uni.redirectTo({
+					// 				url: `/pages/money/pay?orderId=${orderId}`
+					// 			})
+					// 		} else if (res.cancel) {
+					// 			console.log("cancel")
+					// 			uni.redirectTo({
+					// 				url: '/pages/order/order?state=0'
+					// 			})
+					// 		}
+					// 	}
+					// });
 				});
 			},
 			stopPrevent() {},

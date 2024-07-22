@@ -1,4 +1,5 @@
 {
+	"common.success": "操作成功",
 	"common.language": "中",
 	"common.loading": "正在加载...",
 	"common.tips": "提示",
@@ -117,7 +118,8 @@
 	"order.submit": "提交订单",
 	"order.coupon.expirationDate": "有效期至",
 	"order.tips": "提示",
-	"order.afterSubmitMsg": "订单创建成功，是否要立即支付？",
+	"order.afterSubmitMsg": "我们已经收到你的订单需求，客户经理会在48小时内和你确认并完成线下支付，请内心等候。",
+	"order.afterSubmitMsg.ok": "Ok",
 	"order.afterSubmitMsg.pay": "去支付",
 	"order.afterSubmitMsg.cancel": "取消",
 	"order.total": "共",
@@ -148,6 +150,14 @@
 	"order.totalPaymentAmount": "实付金额",
 	"order.paymentTime": "付款时间",
 	"order.shouldPayAmount": "应付金额",
+	"order.payType.Alipay": "支付宝",
+	"order.payType.WeChat": "微信",
+	"order.payType.offLine": "线下支付",
+	"order.payType.unPay": "未支付",
+
+	"order.delivery.company": "物流公司",
+	"order.delivery.sn": "物流单号",
+	"order.delivery.dateTime": "发货时间",
 
 	"product.relatedProducts": "相关商品",
 	"product.soldOut": "已售",

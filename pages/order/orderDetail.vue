@@ -92,14 +92,29 @@
 			</view>
 		</view>
 
+    <view class="yt-list">
+      <view class="yt-list-cell b-b">
+        <text class="cell-tit clamp">{{$t('order.delivery.sn')}}</text>
+        <text class="cell-tip">{{order.deliverySn}}</text>
+      </view>
+      <view class="yt-list-cell b-b">
+        <text class="cell-tit clamp">{{$t('order.delivery.dateTime')}}</text>
+        <text class="cell-tip">{{order.deliveryTime | formatDateTime}}</text>
+      </view>
+      <view class="yt-list-cell b-b">
+        <text class="cell-tit clamp">{{$t('order.delivery.company')}}</text>
+        <text class="cell-tip">{{order.deliveryCompany}}</text>
+      </view>
+    </view>
+
 		<!-- 底部 -->
 		<view class="footer" v-if="order.status==0||order.status==2||order.status==3">
 			<view class="action-box b-t" v-if="order.status==0">
 				<button class="action-btn" @click="cancelOrder(order.id)">{{$t('order.cancelOrder')}}</button>
-				<button class="action-btn recom" @click="payOrder(order.id)">{{$t('order.payOrder')}}</button>
+<!--				<button class="action-btn recom" @click="payOrder(order.id)">{{$t('order.payOrder')}}</button>-->
 			</view>
 			<view class="action-box b-t" v-if="order.status == 2">
-				<button class="action-btn">{{$t('order.checkLogistics')}}</button>
+<!--				<button class="action-btn">{{$t('order.checkLogistics')}}</button>-->
 				<button class="action-btn recom" @click="receiveOrder(order.id)">{{$t('order.confirmReceipt')}}</button>
 			</view>
 			<view class="action-box b-t" v-if="order.status == 3">
@@ -122,6 +137,7 @@
 		cancelUserOrder,
 		confirmReceiveOrder
 	} from '@/api/order.js';
+  import { i18n } from '@/main.js'
 	import {
 		formatDate
 	} from '@/utils/date';
@@ -159,12 +175,14 @@
 			},
 			formatPayType(payType) {
 				if (payType == 0) {
-					return "未支付";
+					return i18n.t("order.payType.unPay");
 				} else if (payType == 1) {
-					return "支付宝支付";
+					return i18n.t("order.payType.Alipay");
 				} else if (payType == 2) {
-					return "微信支付";
-				}
+					return i18n.t("order.payType.WeChat");
+				}else {
+          return i18n.t("order.payType.offLine");
+        }
 				return null;
 			},
 		},
