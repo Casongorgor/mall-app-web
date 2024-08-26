@@ -66,7 +66,7 @@
 		</view>
 
 		<!-- 秒杀专区 -->
-		<view class="f-header m-t" v-if="homeFlashPromotion!==null">
+		<!-- <view class="f-header m-t" v-if="homeFlashPromotion!==null">
 			<image src="/static/icon_flash_promotion.png"></image>
 			<view class="tit-box">
 				<text class="tit">{{$t('home.seckillZone')}}</text>
@@ -83,7 +83,7 @@
 				</view>
 			</view>
 			<text class="yticon icon-you" v-show="false"></text>
-		</view>
+		</view> -->
 
 		<view class="guess-section">
 			<view v-for="(item, index) in homeFlashPromotion.productList" :key="index" class="guess-item" @click="navToDetailPage(item)">

@@ -13,7 +13,7 @@
 	"home.searchInput": "Please enter keyword",
 	"home.hearder01": "Special topics",
 	"home.hearder02": "Topic",
-	"home.hearder03": "Preferred selection",
+	"home.hearder03": "Preferred",
 	"home.hearder04": "Special offers",
 	"home.searchText": "Enter a keyword search",
 	"home.tit01": "Brand manufacturer direct supply",
@@ -183,7 +183,7 @@
 	"search.clearHistory": "Clear History",
 	"search.history": "History",
 
-	"login.welcome": "Welcome Backend!",
+	"login.welcome": "Welcome Back!",
 	"login.userName": "User name",
 	"login.userName.placeholder": "input user name",
 	"login.password": "Password",
